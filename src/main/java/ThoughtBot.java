@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import utilities.Constants;
+import userCommands.*;
 
 public class ThoughtBot {
     public static void main(String[] args) {
@@ -11,11 +12,19 @@ public class ThoughtBot {
 
         userInput = getUserInput(userInputScanner);
         while (!userInput.equalsIgnoreCase("bye")) {
-            switch (userInput.toLowerCase()) {
-            case "list":
+            UserCommand uc = Parser.parseInput(userInput);
+
+            switch (uc.getCommandType()) {
+            case LIST:
                 myList.displayTaskList();
                 break;
-            default:
+            case MARK:
+                UserCommandMarkUnmark ucmu= (UserCommandMarkUnmark) uc;
+                myList.markEntry(ucmu.getMarkUnmarkNumber());
+                break;
+            case UNMARK:
+                break;
+            case NIL:
                 myList.addEntry(userInput);
             }
 

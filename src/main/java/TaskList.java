@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import static utilities.Constants.SEPARATORNEWLINE;
+import static utilities.Constants.INDENT;
 
 public class TaskList {
     private ArrayList<Entry> entries;
@@ -11,6 +12,25 @@ public class TaskList {
     public void addEntry(String entryName) {
         this.entries.add(new Entry(entryName));
         System.out.println("Added task: " + entryName + "\n" + SEPARATORNEWLINE);
+    }
+
+    public void markEntry(int number) {
+        String printString = INDENT;
+        if (number > entries.size()) {
+            printString += "This task does not exist!\n" + SEPARATORNEWLINE;
+            System.out.println(printString);
+            return;
+        }
+
+        Entry entryToMark = entries.get(number - 1);
+        boolean marked = entryToMark.markDone();
+        if (marked) {
+            printString += "I have marked this task as done.\n" + INDENT + entryToMark.getName();
+        } else {
+            printString += "This task has already been marked.";
+        }
+        printString += "\n" + SEPARATORNEWLINE;
+        System.out.println(printString);
     }
 
     public void displayTaskList() {
