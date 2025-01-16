@@ -7,6 +7,7 @@ public class ThoughtBot {
         String userInput;
         Scanner userInputScanner = new Scanner(System.in);
         TaskList myList = new TaskList();
+        String printString = "";
 
         greet();
 
@@ -16,17 +17,19 @@ public class ThoughtBot {
 
             switch (uc.getCommandType()) {
             case LIST:
-                myList.displayTaskList();
+                printString = myList.getTaskList();
                 break;
             case MARK:
                 UserCommandMarkUnmark markCom = (UserCommandMarkUnmark) uc;
-                myList.markEntry(markCom.getMarkUnmarkNumber());
+                printString = myList.markEntry(markCom.getMarkUnmarkNumber());
                 break;
             case UNMARK:
                 break;
             case NIL:
-                myList.addEntry(userInput);
+                printString = myList.addEntry(userInput);
             }
+
+            System.out.println(printString);
 
             userInput = getUserInput(userInputScanner);
         }

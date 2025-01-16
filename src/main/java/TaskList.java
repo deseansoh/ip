@@ -9,17 +9,16 @@ public class TaskList {
         this.entries = new ArrayList<>(100);
     }
 
-    public void addEntry(String entryName) {
+    public String addEntry(String entryName) {
         this.entries.add(new Entry(entryName));
-        System.out.println("Added task: " + entryName + "\n" + SEPARATORNEWLINE);
+        return "Added task: " + entryName + "\n" + SEPARATORNEWLINE;
     }
 
-    public void markEntry(int number) {
+    public String markEntry(int number) {
         String printString = INDENT;
         if (number > entries.size()) {
             printString += "This task does not exist!\n" + SEPARATORNEWLINE;
-            System.out.println(printString);
-            return;
+            return printString;
         }
 
         Entry entryToMark = entries.get(number - 1);
@@ -30,10 +29,10 @@ public class TaskList {
             printString += "This task has already been marked.";
         }
         printString += "\n" + SEPARATORNEWLINE;
-        System.out.println(printString);
+        return printString;
     }
 
-    public void displayTaskList() {
+    public String getTaskList() {
         String stringForm = "";
         int currentNumber = 1;
 
@@ -46,6 +45,6 @@ public class TaskList {
 
         stringForm = stringForm + SEPARATORNEWLINE;
 
-        System.out.println(stringForm);
+        return stringForm;
     }
 }
