@@ -6,14 +6,15 @@ public final class Constants {
         // to prevent instantiation
     }
 
-    public static final String SEPARATOR = "    ________________________________________";
-    public static final String SEPARATORNEWLINE = "    ________________________________________\n";
+    public static final String INDENT = "    ";
+    public static final String SEPARATOR = INDENT + "________________________________________";
+    public static final String SEPARATORNEWLINE = INDENT + "________________________________________\n";
 
     public static final String GREETING = SEPARATORNEWLINE
-            + "    Hello there! I'm ThoughtBot\n"
-            + "    How may I help you today?\n"
+            + INDENT + "Hello there! I'm ThoughtBot\n"
+            + INDENT + "How may I help you today?\n"
             + SEPARATORNEWLINE;
 
-    public static final String GOODBYE = "    Goodbye! Have a great week ahead :)\n"
+    public static final String GOODBYE = INDENT + "Goodbye! Have a great week ahead :)\n"
             + SEPARATOR;
 }
