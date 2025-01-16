@@ -19,8 +19,8 @@ public class ThoughtBot {
                 myList.displayTaskList();
                 break;
             case MARK:
-                UserCommandMarkUnmark ucmu= (UserCommandMarkUnmark) uc;
-                myList.markEntry(ucmu.getMarkUnmarkNumber());
+                UserCommandMarkUnmark markCom = (UserCommandMarkUnmark) uc;
+                myList.markEntry(markCom.getMarkUnmarkNumber());
                 break;
             case UNMARK:
                 break;
