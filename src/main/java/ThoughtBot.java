@@ -7,10 +7,9 @@ public class ThoughtBot {
         Scanner userInputScanner = new Scanner(System.in);
         TaskList myList = new TaskList();
 
-        System.out.println(Constants.GREETING);
+        greet();
 
         userInput = getUserInput(userInputScanner);
-
         while (!userInput.equalsIgnoreCase("bye")) {
             switch (userInput.toLowerCase()) {
             case "list":
@@ -23,6 +22,14 @@ public class ThoughtBot {
             userInput = getUserInput(userInputScanner);
         }
 
+        goodbye();
+    }
+
+    public static void greet() {
+        System.out.println(Constants.GREETING);
+    }
+
+    public static void goodbye() {
         System.out.println(Constants.GOODBYE);
     }
 
