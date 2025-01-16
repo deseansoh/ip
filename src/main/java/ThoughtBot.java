@@ -12,6 +12,9 @@ public class ThoughtBot {
         final String GOODBYE = "Goodbye! Have a great week ahead :)\n"
                 + SEPARATOR;
 
+        String userInput = "";
+        Scanner userInputScanner = new Scanner(System.in);
+
         System.out.println(GREETING);
         System.out.println(GOODBYE);
     }
