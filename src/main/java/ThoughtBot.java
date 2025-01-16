@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ThoughtBot {
     public static void main(String[] args) {
         final String SEPARATOR = "________________________________________";
