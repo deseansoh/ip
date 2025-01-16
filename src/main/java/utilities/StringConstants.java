@@ -1,8 +1,8 @@
 package utilities;
 
-public final class Constants {
+public final class StringConstants {
 
-    private Constants() {
+    private StringConstants() {
         // to prevent instantiation
     }
 

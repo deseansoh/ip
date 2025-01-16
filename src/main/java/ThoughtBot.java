@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import utilities.Constants;
+import utilities.StringConstants;
 import userCommands.*;
 
 public class ThoughtBot {
@@ -35,16 +35,16 @@ public class ThoughtBot {
     }
 
     public static void greet() {
-        System.out.println(Constants.GREETING);
+        System.out.println(StringConstants.GREETING);
     }
 
     public static void goodbye() {
-        System.out.println(Constants.GOODBYE);
+        System.out.println(StringConstants.GOODBYE);
     }
 
     public static String getUserInput(Scanner userInputScanner) {
         String userInput = userInputScanner.nextLine();
-        System.out.println(Constants.SEPARATOR);
+        System.out.println(StringConstants.SEPARATOR);
         return userInput;
     }
 }

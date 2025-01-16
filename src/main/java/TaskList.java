@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import static utilities.Constants.SEPARATORNEWLINE;
-import static utilities.Constants.INDENT;
+import static utilities.StringConstants.SEPARATORNEWLINE;
+import static utilities.StringConstants.INDENT;
 
 public class TaskList {
     private ArrayList<Entry> entries;
