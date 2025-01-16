@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import static utilities.Constants.SEPARATORNEWLINE;
 
 public class TaskList {
     private ArrayList<Entry> entries;
@@ -9,9 +10,10 @@ public class TaskList {
 
     public void addEntry(String entryName) {
         this.entries.add(new Entry(entryName));
+        System.out.println("Added task: " + entryName + "\n" + SEPARATORNEWLINE);
     }
 
-    public String displayTaskList() {
+    public void displayTaskList() {
         String stringForm = "";
         int currentNumber = 1;
 
@@ -22,6 +24,8 @@ public class TaskList {
             stringForm = stringForm + (numberString + ". " + e.getName() + "\n");
         }
 
-        return stringForm;
+        stringForm = stringForm + SEPARATORNEWLINE;
+
+        System.out.println(stringForm);
     }
 }

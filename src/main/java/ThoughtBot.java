@@ -5,13 +5,20 @@ public class ThoughtBot {
     public static void main(String[] args) {
         String userInput;
         Scanner userInputScanner = new Scanner(System.in);
+        TaskList myList = new TaskList();
 
         System.out.println(Constants.GREETING);
 
         userInput = getUserInput(userInputScanner);
 
         while (!userInput.equalsIgnoreCase("bye")) {
-            System.out.println(userInput + "\n" + Constants.SEPARATORNEWLINE);
+            switch (userInput.toLowerCase()) {
+            case "list":
+                myList.displayTaskList();
+                break;
+            default:
+                myList.addEntry(userInput);
+            }
 
             userInput = getUserInput(userInputScanner);
         }
