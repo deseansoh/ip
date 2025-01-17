@@ -24,6 +24,8 @@ public class ThoughtBot {
                 printString = myList.markEntry(markCom.getMarkUnmarkNumber());
                 break;
             case UNMARK:
+                UserCommandMarkUnmark unmarkCom = (UserCommandMarkUnmark) uc;
+                printString = myList.unmarkEntry(unmarkCom.getMarkUnmarkNumber());
                 break;
             case NIL:
                 printString = myList.addEntry(userInput);
