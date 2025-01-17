@@ -39,10 +39,10 @@ public class TaskList {
             return printString;
         }
 
-        Entry entryToMark = entries.get(number - 1);
-        boolean unmarked = entryToMark.unmarkDone();
+        Entry entryToUnmark = entries.get(number - 1);
+        boolean unmarked = entryToUnmark.unmarkDone();
         if (unmarked) {
-            printString += "I have unmarked this task as done.\n" + entryToMark.getName();
+            printString += "I have unmarked this task as done.\n" + entryToUnmark.getName();
         } else {
             printString += "This task has already been unmarked.";
         }

@@ -12,6 +12,9 @@ public class Parser {
         switch (firstWord.toLowerCase()) {
         case "list":
             return new UserCommandList();
+        case "todo":
+            String taskName = userInput.split(" ", 2)[1];
+            return new UserCommandTodo(taskName);
         case "mark":
             int markNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
             return new UserCommandMarkUnmark(Command.MARK, markNumber);

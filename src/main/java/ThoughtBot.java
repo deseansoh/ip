@@ -19,6 +19,10 @@ public class ThoughtBot {
             case LIST:
                 printString = myList.getTaskList();
                 break;
+            case TODO:
+                UserCommandTodo todo = (UserCommandTodo) uc;
+                printString = myList.addEntry(todo.getTaskName());
+                break;
             case MARK:
                 UserCommandMarkUnmark markCom = (UserCommandMarkUnmark) uc;
                 printString = myList.markEntry(markCom.getMarkUnmarkNumber());
@@ -28,7 +32,8 @@ public class ThoughtBot {
                 printString = myList.unmarkEntry(unmarkCom.getMarkUnmarkNumber());
                 break;
             case NIL:
-                printString = myList.addEntry(userInput);
+                printString = "Sorry, I do not understand the command!\n"
+                        + "Do ensure the format is right\n";
             }
 
             printString = indentAndFormat(printString);
