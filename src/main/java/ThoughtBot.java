@@ -45,9 +45,6 @@ public class ThoughtBot {
                     UserCommandMarkUnmark unmark = (UserCommandMarkUnmark) uc;
                     printString = myList.unmarkEntry(unmark.getMarkUnmarkNumber());
                     break;
-                case NIL:
-                    printString = "Sorry, I do not understand the command!\n"
-                            + "Do ensure the command is valid\n";
                 }
             } catch (ThoughtBotException e) {
                 printString = e.getMessage();

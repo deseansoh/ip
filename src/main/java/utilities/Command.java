@@ -8,5 +8,4 @@ public enum Command {
     DEADLINE,
     EVENT,
     ERROR,
-    NIL,
 }

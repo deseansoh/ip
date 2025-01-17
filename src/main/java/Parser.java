@@ -1,5 +1,6 @@
 import exceptions.EmptyDescException;
 import exceptions.ThoughtBotException;
+import exceptions.UnrecognisedCmdException;
 import userCommands.*;
 import utilities.Command;
 
@@ -42,7 +43,7 @@ public class Parser {
             int unmarkNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
             return new UserCommandMarkUnmark(Command.UNMARK, unmarkNumber);
         default:
-            return new UserCommandNil();
+            throw new UnrecognisedCmdException();
         }
     }
 }
