@@ -12,19 +12,19 @@ public class TaskList {
     public String addTodo(String entryName) {
         Entry eTodo = new EntryToDo(entryName);
         this.entries.add(eTodo);
-        return "Added task: \n" + eTodo.getName() + "\n";
+        return "Added task:\n" + eTodo.getName() + "\n";
     }
 
     public String addDeadline(String entryName, String deadline) {
         Entry eDeadline = new EntryDeadline(entryName, deadline);
         this.entries.add(eDeadline);
-        return "Added task: \n" + eDeadline.getName() + "\n";
+        return "Added task:\n" + eDeadline.getName() + "\n";
     }
 
     public String addEvent(String entryName, String fromTime, String toTime) {
         Entry eEvent = new EntryEvent(entryName, fromTime, toTime);
         this.entries.add(eEvent);
-        return "Added task: \n" + eEvent.getName() + "\n";
+        return "Added task:\n" + eEvent.getName() + "\n";
     }
 
     public String markEntry(int number) {
@@ -73,6 +73,9 @@ public class TaskList {
 
             printString = printString + numberString + ". " + e.getName() + "\n";
         }
+
+        printString = printString + "There is/are currently " + String.valueOf(currentNumber - 1)
+                + " task(s) in the list.\n";
 
         return printString;
     }
