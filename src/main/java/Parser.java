@@ -1,3 +1,5 @@
+import exceptions.EmptyDescException;
+import exceptions.ThoughtBotException;
 import userCommands.*;
 import utilities.Command;
 
@@ -6,7 +8,7 @@ public class Parser {
         // to prevent instantiation
     }
 
-    public static UserCommand parseInput(String userInput) {
+    public static UserCommand parseInput(String userInput) throws ThoughtBotException {
         userInput = userInput.toLowerCase();
         String firstWord = userInput.split(" ")[0];
 
@@ -19,7 +21,7 @@ public class Parser {
                 return new UserCommandTodo(todoTaskName);
             } catch (ArrayIndexOutOfBoundsException e) {
                 String errorMessage = "The description of todo tasks cannot be empty!";
-                return new UserCommandError(errorMessage);
+                throw new EmptyDescException(errorMessage);
             }
         case "deadline":
             String[] splitSlashBy = userInput.split(" /by ");
