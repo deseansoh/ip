@@ -21,7 +21,11 @@ public class ThoughtBot {
                 break;
             case TODO:
                 UserCommandTodo todo = (UserCommandTodo) uc;
-                printString = myList.addEntry(todo.getTaskName());
+                printString = myList.addTodo(todo.getTaskName());
+                break;
+            case DEADLINE:
+                UserCommandDeadline deadline = (UserCommandDeadline) uc;
+                printString = myList.addDeadline(deadline.getTaskName(), deadline.getDeadline());
                 break;
             case MARK:
                 UserCommandMarkUnmark markCom = (UserCommandMarkUnmark) uc;

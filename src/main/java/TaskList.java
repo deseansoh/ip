@@ -9,9 +9,16 @@ public class TaskList {
         this.entries = new ArrayList<>(100);
     }
 
-    public String addEntry(String entryName) {
-        this.entries.add(new EntryToDo(entryName));
-        return "Added task: " + entryName + "\n";
+    public String addTodo(String entryName) {
+        Entry eTodo = new EntryToDo(entryName);
+        this.entries.add(eTodo);
+        return "Added task: \n" + eTodo.getName() + "\n";
+    }
+
+    public String addDeadline(String entryName, String deadline) {
+        Entry eDeadline = new EntryDeadline(entryName, deadline);
+        this.entries.add(eDeadline);
+        return "Added task: \n" + eDeadline.getName() + "\n";
     }
 
     public String markEntry(int number) {

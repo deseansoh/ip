@@ -13,8 +13,13 @@ public class Parser {
         case "list":
             return new UserCommandList();
         case "todo":
-            String taskName = userInput.split(" ", 2)[1];
-            return new UserCommandTodo(taskName);
+            String todoTaskName = userInput.split(" ", 2)[1];
+            return new UserCommandTodo(todoTaskName);
+        case "deadline":
+            String[] splitSlashBy = userInput.split("/by");
+            String deadlineTaskName = splitSlashBy[0].split(" ", 2)[1];
+            String deadlineString = splitSlashBy[1];
+            return new UserCommandDeadline(deadlineTaskName, deadlineString);
         case "mark":
             int markNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
             return new UserCommandMarkUnmark(Command.MARK, markNumber);
