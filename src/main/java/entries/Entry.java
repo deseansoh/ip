@@ -9,14 +9,6 @@ public abstract class Entry {
         this.done = false;
     }
 
-    public String getName() {
-        if (done) {
-            return "[X] " + this.name;
-        }
-
-        return "[ ] " + this.name;
-    }
-
     public boolean markDone() {
         if (!done) {
             this.done = true;
@@ -33,5 +25,13 @@ public abstract class Entry {
         }
 
         return false;
+    }
+
+    public String getName() {
+        if (done) {
+            return "[X] " + this.name;
+        }
+
+        return "[ ] " + this.name;
     }
 }
