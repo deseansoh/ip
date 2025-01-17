@@ -31,6 +31,7 @@ public class ThoughtBot {
                 printString = myList.addEntry(userInput);
             }
 
+            printString = indentAndFormat(printString);
             System.out.println(printString);
 
             userInput = getUserInput(userInputScanner);
@@ -49,7 +50,16 @@ public class ThoughtBot {
 
     public static String getUserInput(Scanner userInputScanner) {
         String userInput = userInputScanner.nextLine();
-        System.out.println(StringConstants.SEPARATOR);
         return userInput;
+    }
+
+    public static String indentAndFormat(String response) {
+        String[] lines = response.split("\n");
+        response = StringConstants.INDENT + StringConstants.SEPARATORNEWLINE;
+        for (String l: lines) {
+            response += StringConstants.INDENT + l + "\n";
+        }
+        response += StringConstants.INDENT + StringConstants.SEPARATORNEWLINE;
+        return response;
     }
 }

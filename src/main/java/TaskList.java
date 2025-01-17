@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import static utilities.StringConstants.SEPARATORNEWLINE;
 
 public class TaskList {
     private ArrayList<Entry> entries;
@@ -11,13 +10,13 @@ public class TaskList {
 
     public String addEntry(String entryName) {
         this.entries.add(new Entry(entryName));
-        return "Added task: " + entryName + "\n" + SEPARATORNEWLINE;
+        return "Added task: " + entryName + "\n";
     }
 
     public String markEntry(int number) {
         printString = "";
         if (number > entries.size()) {
-            printString += "This task does not exist!\n" + SEPARATORNEWLINE;
+            printString += "This task does not exist!\n";
             return printString;
         }
 
@@ -28,14 +27,14 @@ public class TaskList {
         } else {
             printString += "This task has already been marked.";
         }
-        printString += "\n" + SEPARATORNEWLINE;
+        printString += "\n";
         return printString;
     }
 
     public String unmarkEntry(int number) {
         printString = "";
         if (number > entries.size()) {
-            printString += "This task does not exist!\n" + SEPARATORNEWLINE;
+            printString += "This task does not exist!\n";
             return printString;
         }
 
@@ -46,7 +45,7 @@ public class TaskList {
         } else {
             printString += "This task has already been unmarked.";
         }
-        printString += "\n" + SEPARATORNEWLINE;
+        printString += "\n";
         return printString;
     }
 
@@ -60,8 +59,6 @@ public class TaskList {
 
             printString = printString + numberString + ". " + e.getName() + "\n";
         }
-
-        printString = printString + SEPARATORNEWLINE;
 
         return printString;
     }

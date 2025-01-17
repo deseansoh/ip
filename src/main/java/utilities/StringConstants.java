@@ -7,14 +7,14 @@ public final class StringConstants {
     }
 
     public static final String INDENT = "    ";
-    public static final String SEPARATOR = INDENT + "________________________________________";
-    public static final String SEPARATORNEWLINE = INDENT + "________________________________________\n";
+    public static final String SEPARATORNEWLINE = "________________________________________\n";
 
-    public static final String GREETING = SEPARATORNEWLINE
+    public static final String GREETING = INDENT + SEPARATORNEWLINE
             + INDENT + "Hello there! I'm ThoughtBot\n"
             + INDENT + "How may I help you today?\n"
-            + SEPARATORNEWLINE;
+            + INDENT + SEPARATORNEWLINE;
 
-    public static final String GOODBYE = INDENT + "Goodbye! Have a great week ahead :)\n"
-            + SEPARATOR;
+    public static final String GOODBYE = INDENT + SEPARATORNEWLINE
+            + INDENT + "Goodbye! Have a great week ahead :)\n"
+            + INDENT + SEPARATORNEWLINE;
 }
