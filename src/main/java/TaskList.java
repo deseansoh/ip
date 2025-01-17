@@ -74,9 +74,10 @@ public class TaskList {
             printString = printString + numberString + ". " + e.getName() + "\n";
         }
 
-        printString = printString + "There is/are currently " + String.valueOf(currentNumber - 1)
-                + " task(s) in the list.\n";
-
         return printString;
+    }
+
+    public String getTaskNumbersString() {
+        return "There is/are currently " + String.valueOf(entries.size()) + " task(s) in the list.\n";
     }
 }
