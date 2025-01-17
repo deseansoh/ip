@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import entries.*;
 
 public class TaskList {
     private ArrayList<Entry> entries;
@@ -9,7 +10,7 @@ public class TaskList {
     }
 
     public String addEntry(String entryName) {
-        this.entries.add(new Entry(entryName));
+        this.entries.add(new EntryToDo(entryName));
         return "Added task: " + entryName + "\n";
     }
 

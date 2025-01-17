@@ -1,4 +1,6 @@
-public class Entry {
+package entries;
+
+public abstract class Entry {
     private String name;
     private boolean done;
 
