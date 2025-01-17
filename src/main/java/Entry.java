@@ -24,7 +24,7 @@ public class Entry {
         return false;
     }
 
-    public boolean markUndone() {
+    public boolean unmarkDone() {
         if (done) {
             this.done = false;
             return true;
