@@ -22,22 +22,29 @@ public class ThoughtBot {
             case TODO:
                 UserCommandTodo todo = (UserCommandTodo) uc;
                 printString = myList.addTodo(todo.getTaskName());
+                printString += myList.getTaskNumbersString();
                 break;
             case DEADLINE:
                 UserCommandDeadline deadline = (UserCommandDeadline) uc;
                 printString = myList.addDeadline(deadline.getTaskName(), deadline.getDeadline());
+                printString += myList.getTaskNumbersString();
                 break;
             case EVENT:
                 UserCommandEvent event = (UserCommandEvent) uc;
                 printString = myList.addEvent(event.getTaskName(), event.getFromTime(), event.getToTime());
+                printString += myList.getTaskNumbersString();
                 break;
             case MARK:
-                UserCommandMarkUnmark markCom = (UserCommandMarkUnmark) uc;
-                printString = myList.markEntry(markCom.getMarkUnmarkNumber());
+                UserCommandMarkUnmark mark = (UserCommandMarkUnmark) uc;
+                printString = myList.markEntry(mark.getMarkUnmarkNumber());
                 break;
             case UNMARK:
-                UserCommandMarkUnmark unmarkCom = (UserCommandMarkUnmark) uc;
-                printString = myList.unmarkEntry(unmarkCom.getMarkUnmarkNumber());
+                UserCommandMarkUnmark unmark = (UserCommandMarkUnmark) uc;
+                printString = myList.unmarkEntry(unmark.getMarkUnmarkNumber());
+                break;
+            case ERROR:
+                UserCommandError error = (UserCommandError) uc;
+                printString = error.getErrorMessage();
                 break;
             case NIL:
                 printString = "Sorry, I do not understand the command!\n"

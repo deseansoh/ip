@@ -14,8 +14,13 @@ public class Parser {
         case "list":
             return new UserCommandList();
         case "todo":
-            String todoTaskName = userInput.split(" ", 2)[1];
-            return new UserCommandTodo(todoTaskName);
+            try {
+                String todoTaskName = userInput.split(" ", 2)[1];
+                return new UserCommandTodo(todoTaskName);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                String errorMessage = "The description of todo tasks cannot be empty!";
+                return new UserCommandError(errorMessage);
+            }
         case "deadline":
             String[] splitSlashBy = userInput.split(" /by ");
             String deadlineTaskName = splitSlashBy[0].split(" ", 2)[1];
