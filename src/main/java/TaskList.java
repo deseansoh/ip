@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import static utilities.StringConstants.SEPARATORNEWLINE;
-import static utilities.StringConstants.INDENT;
 
 public class TaskList {
     private ArrayList<Entry> entries;
+    String printString = "";
 
     public TaskList() {
         this.entries = new ArrayList<>(100);
@@ -15,7 +15,7 @@ public class TaskList {
     }
 
     public String markEntry(int number) {
-        String printString = INDENT;
+        printString = "";
         if (number > entries.size()) {
             printString += "This task does not exist!\n" + SEPARATORNEWLINE;
             return printString;
@@ -24,7 +24,7 @@ public class TaskList {
         Entry entryToMark = entries.get(number - 1);
         boolean marked = entryToMark.markDone();
         if (marked) {
-            printString += "I have marked this task as done.\n" + INDENT + entryToMark.getName();
+            printString += "I have marked this task as done.\n" + entryToMark.getName();
         } else {
             printString += "This task has already been marked.";
         }
@@ -32,19 +32,37 @@ public class TaskList {
         return printString;
     }
 
+    public String unmarkEntry(int number) {
+        printString = "";
+        if (number > entries.size()) {
+            printString += "This task does not exist!\n" + SEPARATORNEWLINE;
+            return printString;
+        }
+
+        Entry entryToMark = entries.get(number - 1);
+        boolean unmarked = entryToMark.unmarkDone();
+        if (unmarked) {
+            printString += "I have unmarked this task as done.\n" + entryToMark.getName();
+        } else {
+            printString += "This task has already been unmarked.";
+        }
+        printString += "\n" + SEPARATORNEWLINE;
+        return printString;
+    }
+
     public String getTaskList() {
-        String stringForm = "";
+        printString = "Here are your current tasks:\n";
         int currentNumber = 1;
 
         for (Entry e: entries) {
             String numberString = String.valueOf(currentNumber);
             currentNumber++;
 
-            stringForm = stringForm + (numberString + ". " + e.getName() + "\n");
+            printString = printString + numberString + ". " + e.getName() + "\n";
         }
 
-        stringForm = stringForm + SEPARATORNEWLINE;
+        printString = printString + SEPARATORNEWLINE;
 
-        return stringForm;
+        return printString;
     }
 }
