@@ -7,19 +7,27 @@ public class Parser {
     }
 
     public static UserCommand parseInput(String userInput) {
+        userInput = userInput.toLowerCase();
         String firstWord = userInput.split(" ")[0];
 
-        switch (firstWord.toLowerCase()) {
+        switch (firstWord) {
         case "list":
             return new UserCommandList();
         case "todo":
             String todoTaskName = userInput.split(" ", 2)[1];
             return new UserCommandTodo(todoTaskName);
         case "deadline":
-            String[] splitSlashBy = userInput.split("/by");
+            String[] splitSlashBy = userInput.split(" /by ");
             String deadlineTaskName = splitSlashBy[0].split(" ", 2)[1];
             String deadlineString = splitSlashBy[1];
             return new UserCommandDeadline(deadlineTaskName, deadlineString);
+        case "event":
+            String[] splitSlashFrom = userInput.split(" /from ");
+            String eventTaskName = splitSlashFrom[0].split(" ", 2)[1];
+            String[] splitSlashTo = splitSlashFrom[1].split(" /to ");
+            String eventFrom = splitSlashTo[0];
+            String eventTo = splitSlashTo[1];
+            return new UserCommandEvent(eventTaskName, eventFrom, eventTo);
         case "mark":
             int markNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
             return new UserCommandMarkUnmark(Command.MARK, markNumber);

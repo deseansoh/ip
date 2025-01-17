@@ -21,6 +21,12 @@ public class TaskList {
         return "Added task: \n" + eDeadline.getName() + "\n";
     }
 
+    public String addEvent(String entryName, String fromTime, String toTime) {
+        Entry eEvent = new EntryEvent(entryName, fromTime, toTime);
+        this.entries.add(eEvent);
+        return "Added task: \n" + eEvent.getName() + "\n";
+    }
+
     public String markEntry(int number) {
         printString = "";
         if (number > entries.size()) {

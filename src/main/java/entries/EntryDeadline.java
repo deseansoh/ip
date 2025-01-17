@@ -10,6 +10,6 @@ public class EntryDeadline extends Entry {
 
     @Override
     public String getName() {
-        return "[D]" + super.getName() + " (by:" + deadline + ")";
+        return "[D]" + super.getName() + " (by: " + deadline + ")";
     }
 }

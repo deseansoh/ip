@@ -6,5 +6,6 @@ public enum Command {
     UNMARK,
     TODO,
     DEADLINE,
+    EVENT,
     NIL,
 }

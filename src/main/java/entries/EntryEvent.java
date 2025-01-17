@@ -12,6 +12,6 @@ public class EntryEvent extends Entry {
 
     @Override
     public String getName() {
-        return "[E]" + super.getName() + " (from:" + fromTime + "to:" + toTime + ")";
+        return "[E]" + super.getName() + " (from: " + fromTime + " | to: " + toTime + ")";
     }
 }

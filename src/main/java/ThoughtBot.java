@@ -27,6 +27,10 @@ public class ThoughtBot {
                 UserCommandDeadline deadline = (UserCommandDeadline) uc;
                 printString = myList.addDeadline(deadline.getTaskName(), deadline.getDeadline());
                 break;
+            case EVENT:
+                UserCommandEvent event = (UserCommandEvent) uc;
+                printString = myList.addEvent(event.getTaskName(), event.getFromTime(), event.getToTime());
+                break;
             case MARK:
                 UserCommandMarkUnmark markCom = (UserCommandMarkUnmark) uc;
                 printString = myList.markEntry(markCom.getMarkUnmarkNumber());
