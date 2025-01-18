@@ -1,9 +1,7 @@
-import exceptions.EmptyDescException;
-import exceptions.ThoughtBotException;
-import exceptions.UnrecognisedCmdException;
-import exceptions.UnrecognisedKeywordException;
+import exceptions.*;
 import userCommands.*;
 import utilities.Command;
+import utilities.CommandFormats;
 
 public class Parser {
     private Parser() {
@@ -22,17 +20,17 @@ public class Parser {
                 String todoTaskName = userInput.split(" ", 2)[1];
                 return new UserCommandTodo(todoTaskName);
             } catch (ArrayIndexOutOfBoundsException e) {
-                throw new EmptyDescException("todo <task description>");
+                throw new EmptyDescException(CommandFormats.TODO);
             }
         case "deadline":
             if (!userInput.contains(" /by ")) {
-                throw new UnrecognisedKeywordException("deadline <task description> /by <due time>");
+                throw new UnrecognisedKeywordException(CommandFormats.DEADLINE);
             }
 
             String[] splitSlashBy = userInput.split(" /by ");
             String [] splitDeadline = splitSlashBy[0].split(" ", 2);
             if (splitSlashBy.length != 2 || splitDeadline.length != 2) {
-                throw new EmptyDescException("deadline <task description> /by <due time>");
+                throw new EmptyDescException(CommandFormats.DEADLINE);
             }
 
             String deadlineTaskName = splitDeadline[1];
