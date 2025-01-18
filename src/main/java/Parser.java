@@ -52,11 +52,19 @@ public class Parser {
             String eventTo = splitSlashTo[1];
             return new UserCommandEvent(eventTaskName, eventFrom, eventTo);
         case "mark":
-            int markNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
-            return new UserCommandMarkUnmark(Command.MARK, markNumber);
+            try {
+                int markNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
+                return new UserCommandMarkUnmark(Command.MARK, markNumber);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new EmptyDescException(CommandFormats.MARK);
+            }
         case "unmark":
-            int unmarkNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
-            return new UserCommandMarkUnmark(Command.UNMARK, unmarkNumber);
+            try {
+                int unmarkNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
+                return new UserCommandMarkUnmark(Command.UNMARK, unmarkNumber);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new EmptyDescException(CommandFormats.UNMARK);
+            }
         default:
             throw new UnrecognisedCmdException();
         }
