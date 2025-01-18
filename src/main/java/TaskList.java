@@ -62,6 +62,18 @@ public class TaskList {
         return printString;
     }
 
+    public String deleteTask(int number) throws OutOfBoundsTaskException{
+        printString = "";
+        if (number > tasks.size()) {
+            throw new OutOfBoundsTaskException();
+        }
+
+        Task taskToDelete = tasks.get(number - 1);
+        printString = "I have deleted this task:\n" + taskToDelete.getName() + "\n";
+        tasks.remove(taskToDelete);
+        return printString;
+    }
+
     public String getTaskList() {
         printString = "Here are your current tasks:\n";
         int currentNumber = 1;

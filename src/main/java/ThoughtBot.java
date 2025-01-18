@@ -37,6 +37,11 @@ public class ThoughtBot {
                     printString = myList.addEvent(event.getTaskName(), event.getFromTime(), event.getToTime());
                     printString += myList.getTaskNumbersString();
                     break;
+                case DELETE:
+                    UserCommandDelete delete = (UserCommandDelete) uc;
+                    printString = myList.deleteTask(delete.getDeleteNumber());
+                    printString += myList.getTaskNumbersString();
+                    break;
                 case MARK:
                     UserCommandMarkUnmark mark = (UserCommandMarkUnmark) uc;
                     printString = myList.markEntry(mark.getMarkUnmarkNumber());
