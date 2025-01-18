@@ -37,9 +37,17 @@ public class Parser {
             String deadlineString = splitSlashBy[1];
             return new UserCommandDeadline(deadlineTaskName, deadlineString);
         case "event":
+            if (!userInput.contains(" /from ") || !userInput.contains(" /to ")) {
+                throw new UnrecognisedKeywordException(CommandFormats.EVENT);
+            }
+
             String[] splitSlashFrom = userInput.split(" /from ");
-            String eventTaskName = splitSlashFrom[0].split(" ", 2)[1];
             String[] splitSlashTo = splitSlashFrom[1].split(" /to ");
+            if (splitSlashFrom.length != 2 || splitSlashTo.length != 2) {
+                throw new EmptyDescException(CommandFormats.EVENT);
+            }
+
+            String eventTaskName = splitSlashFrom[0].split(" ", 2)[1];
             String eventFrom = splitSlashTo[0];
             String eventTo = splitSlashTo[1];
             return new UserCommandEvent(eventTaskName, eventFrom, eventTo);
