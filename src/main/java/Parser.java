@@ -66,8 +66,12 @@ public class Parser {
                 throw new EmptyDescException(CommandFormats.UNMARK);
             }
         case "delete":
-            int deleteNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
-            return new UserCommandDelete(deleteNumber);
+            try {
+                int deleteNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
+                return new UserCommandDelete(deleteNumber);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new EmptyDescException(CommandFormats.DELETE);
+            }
         default:
             throw new UnrecognisedCmdException();
         }

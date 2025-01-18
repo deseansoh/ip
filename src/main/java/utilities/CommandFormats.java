@@ -12,5 +12,6 @@ public final class CommandFormats {
     public static final String EVENT = "event <task description> /from <from time> /to <to time>";
     public static final String MARK = "mark <task index number>";
     public static final String UNMARK = "unmark <task index number>";
+    public static final String DELETE = "delete <task index number>";
     public static final String BYE = "bye";
 }
