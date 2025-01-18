@@ -1,10 +1,10 @@
-package entries;
+package tasks;
 
-public abstract class Entry {
+public abstract class Task {
     private String name;
     private boolean done;
 
-    public Entry(String name) {
+    public Task(String name) {
         this.name = name;
         this.done = false;
     }

@@ -1,9 +1,9 @@
-package entries;
+package tasks;
 
-public class EntryDeadline extends Entry {
+public class TaskDeadline extends Task {
     private String deadline;
 
-    public EntryDeadline(String name, String deadline) {
+    public TaskDeadline(String name, String deadline) {
         super(name);
         this.deadline = deadline;
     }

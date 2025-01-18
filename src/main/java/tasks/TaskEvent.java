@@ -1,10 +1,10 @@
-package entries;
+package tasks;
 
-public class EntryEvent extends Entry {
+public class TaskEvent extends Task {
     private String fromTime;
     private String toTime;
 
-    public EntryEvent(String name, String fromTime, String toTime) {
+    public TaskEvent(String name, String fromTime, String toTime) {
         super(name);
         this.fromTime = fromTime;
         this.toTime = toTime;

@@ -1,7 +1,7 @@
-package entries;
+package tasks;
 
-public class EntryToDo extends Entry{
-    public EntryToDo(String name) {
+public class TaskToDo extends Task {
+    public TaskToDo(String name) {
         super(name);
     }
 

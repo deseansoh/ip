@@ -1,43 +1,43 @@
 import java.util.ArrayList;
-import entries.*;
+import tasks.*;
+import exceptions.OutOfBoundsTaskException;
 
 public class TaskList {
-    private ArrayList<Entry> entries;
+    private ArrayList<Task> tasks;
     String printString = "";
 
     public TaskList() {
-        this.entries = new ArrayList<>(100);
+        this.tasks = new ArrayList<>(100);
     }
 
     public String addTodo(String entryName) {
-        Entry eTodo = new EntryToDo(entryName);
-        this.entries.add(eTodo);
-        return "Added task:\n" + eTodo.getName() + "\n";
+        Task tTodo = new TaskToDo(entryName);
+        this.tasks.add(tTodo);
+        return "Added task:\n" + tTodo.getName() + "\n";
     }
 
     public String addDeadline(String entryName, String deadline) {
-        Entry eDeadline = new EntryDeadline(entryName, deadline);
-        this.entries.add(eDeadline);
-        return "Added task:\n" + eDeadline.getName() + "\n";
+        Task tDeadline = new TaskDeadline(entryName, deadline);
+        this.tasks.add(tDeadline);
+        return "Added task:\n" + tDeadline.getName() + "\n";
     }
 
     public String addEvent(String entryName, String fromTime, String toTime) {
-        Entry eEvent = new EntryEvent(entryName, fromTime, toTime);
-        this.entries.add(eEvent);
-        return "Added task:\n" + eEvent.getName() + "\n";
+        Task tEvent = new TaskEvent(entryName, fromTime, toTime);
+        this.tasks.add(tEvent);
+        return "Added task:\n" + tEvent.getName() + "\n";
     }
 
-    public String markEntry(int number) {
+    public String markEntry(int number) throws OutOfBoundsTaskException{
         printString = "";
-        if (number > entries.size()) {
-            printString += "This task does not exist!\n";
-            return printString;
+        if (number > tasks.size()) {
+            throw new OutOfBoundsTaskException();
         }
 
-        Entry entryToMark = entries.get(number - 1);
-        boolean marked = entryToMark.markDone();
+        Task taskToMark = tasks.get(number - 1);
+        boolean marked = taskToMark.markDone();
         if (marked) {
-            printString += "I have marked this task as done.\n" + entryToMark.getName();
+            printString += "I have marked this task as done.\n" + taskToMark.getName();
         } else {
             printString += "This task has already been marked.";
         }
@@ -45,17 +45,16 @@ public class TaskList {
         return printString;
     }
 
-    public String unmarkEntry(int number) {
+    public String unmarkEntry(int number) throws OutOfBoundsTaskException{
         printString = "";
-        if (number > entries.size()) {
-            printString += "This task does not exist!\n";
-            return printString;
+        if (number > tasks.size()) {
+            throw new OutOfBoundsTaskException();
         }
 
-        Entry entryToUnmark = entries.get(number - 1);
-        boolean unmarked = entryToUnmark.unmarkDone();
+        Task taskToUnmark = tasks.get(number - 1);
+        boolean unmarked = taskToUnmark.unmarkDone();
         if (unmarked) {
-            printString += "I have unmarked this task as done.\n" + entryToUnmark.getName();
+            printString += "I have unmarked this task as done.\n" + taskToUnmark.getName();
         } else {
             printString += "This task has already been unmarked.";
         }
@@ -67,7 +66,7 @@ public class TaskList {
         printString = "Here are your current tasks:\n";
         int currentNumber = 1;
 
-        for (Entry e: entries) {
+        for (Task e: tasks) {
             String numberString = String.valueOf(currentNumber);
             currentNumber++;
 
@@ -78,6 +77,6 @@ public class TaskList {
     }
 
     public String getTaskNumbersString() {
-        return "There is/are currently " + String.valueOf(entries.size()) + " task(s) in the list.\n";
+        return "There is/are currently " + String.valueOf(tasks.size()) + " task(s) in the list.\n";
     }
 }
