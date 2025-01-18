@@ -1,6 +1,7 @@
 import exceptions.EmptyDescException;
 import exceptions.ThoughtBotException;
 import exceptions.UnrecognisedCmdException;
+import exceptions.UnrecognisedKeywordException;
 import userCommands.*;
 import utilities.Command;
 
@@ -21,12 +22,20 @@ public class Parser {
                 String todoTaskName = userInput.split(" ", 2)[1];
                 return new UserCommandTodo(todoTaskName);
             } catch (ArrayIndexOutOfBoundsException e) {
-                String errorMessage = "The description of todo tasks cannot be empty!";
-                throw new EmptyDescException(errorMessage);
+                throw new EmptyDescException("todo <task description>");
             }
         case "deadline":
+            if (!userInput.contains(" /by ")) {
+                throw new UnrecognisedKeywordException("deadline <task description> /by <due time>");
+            }
+
             String[] splitSlashBy = userInput.split(" /by ");
-            String deadlineTaskName = splitSlashBy[0].split(" ", 2)[1];
+            String [] splitDeadline = splitSlashBy[0].split(" ", 2);
+            if (splitSlashBy.length != 2 || splitDeadline.length != 2) {
+                throw new EmptyDescException("deadline <task description> /by <due time>");
+            }
+
+            String deadlineTaskName = splitDeadline[1];
             String deadlineString = splitSlashBy[1];
             return new UserCommandDeadline(deadlineTaskName, deadlineString);
         case "event":
