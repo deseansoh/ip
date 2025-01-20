@@ -1,5 +1,10 @@
 import java.util.ArrayList;
-import tasks.*;
+
+import tasks.Task;
+import tasks.TaskToDo;
+import tasks.TaskDeadline;
+import tasks.TaskEvent;
+
 import exceptions.OutOfBoundsTaskException;
 
 public class TaskList {

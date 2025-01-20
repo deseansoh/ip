@@ -1,8 +1,15 @@
 import java.util.Scanner;
 
-import exceptions.ThoughtBotException;
 import utilities.StringConstants;
-import userCommands.*;
+
+import userCommands.UserCommand;
+import userCommands.UserCommandTodo;
+import userCommands.UserCommandDeadline;
+import userCommands.UserCommandEvent;
+import userCommands.UserCommandDelete;
+import userCommands.UserCommandMarkUnmark;
+
+import exceptions.ThoughtBotException;
 
 public class ThoughtBot {
     public static void main(String[] args) {
