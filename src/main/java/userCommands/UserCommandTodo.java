@@ -2,6 +2,10 @@ package userCommands;
 
 import utilities.Command;
 
+/**
+ * Concrete class that encapsulates information about the TODO command, being
+ * the name of the task
+ */
 public class UserCommandTodo extends UserCommand{
     private String taskName;
 

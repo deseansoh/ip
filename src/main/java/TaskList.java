@@ -7,6 +7,10 @@ import tasks.TaskEvent;
 
 import exceptions.OutOfBoundsTaskException;
 
+/**
+ * The TaskList object that keeps track of the Entry objects the user has currently added.
+ * This object also manages all the operations on the Entries itself.
+ */
 public class TaskList {
     private ArrayList<Task> tasks;
     String printString = "";
@@ -15,27 +19,53 @@ public class TaskList {
         this.tasks = new ArrayList<>(100);
     }
 
+    /**
+     * Adds a Todo Task to the tasks ArrayList and returns the corresponding response
+     *
+     * @param entryName Name of the task to be added
+     * @return Response after adding task
+     */
     public String addTodo(String entryName) {
         Task tTodo = new TaskToDo(entryName);
         this.tasks.add(tTodo);
         return "Added task:\n" + tTodo.getName() + "\n";
     }
 
+    /**
+     * Adds a Deadline Task to the tasks ArrayList and returns the corresponding response
+     *
+     * @param entryName Name of the task to be added
+     * @return Response after adding task
+     */
     public String addDeadline(String entryName, String deadline) {
         Task tDeadline = new TaskDeadline(entryName, deadline);
         this.tasks.add(tDeadline);
         return "Added task:\n" + tDeadline.getName() + "\n";
     }
 
+    /**
+     * Adds an Event Task to the tasks ArrayList and returns the corresponding response
+     *
+     * @param entryName Name of the task to be added
+     * @return Response after adding task
+     */
     public String addEvent(String entryName, String fromTime, String toTime) {
         Task tEvent = new TaskEvent(entryName, fromTime, toTime);
         this.tasks.add(tEvent);
         return "Added task:\n" + tEvent.getName() + "\n";
     }
 
+    /**
+     * Marks the corresponding task with at the index number as done and returns the
+     * corresponding response
+     *
+     * @param number Index of the task to be marked
+     * @return Response after marking task
+     * @throws OutOfBoundsTaskException If number is > size of tasks ArrayList
+     */
     public String markEntry(int number) throws OutOfBoundsTaskException{
         printString = "";
-        if (number > tasks.size()) {
+        if (number > tasks.size() || number < 0) {
             throw new OutOfBoundsTaskException();
         }
 
@@ -50,9 +80,17 @@ public class TaskList {
         return printString;
     }
 
+    /**
+     * Unmarks the corresponding task with at the index number as done and returns the
+     * corresponding response
+     *
+     * @param number Index of the task to be unmarked
+     * @return Response after unmarking task
+     * @throws OutOfBoundsTaskException If number is > size of tasks ArrayList
+     */
     public String unmarkEntry(int number) throws OutOfBoundsTaskException{
         printString = "";
-        if (number > tasks.size()) {
+        if (number > tasks.size() || number < 0) {
             throw new OutOfBoundsTaskException();
         }
 
@@ -67,9 +105,17 @@ public class TaskList {
         return printString;
     }
 
+    /**
+     * Deletes the corresponding task with at the index number and returns the
+     * corresponding response
+     *
+     * @param number Index of the task to be deleted
+     * @return Response after deleting task
+     * @throws OutOfBoundsTaskException If number is > size of tasks ArrayList
+     */
     public String deleteTask(int number) throws OutOfBoundsTaskException{
         printString = "";
-        if (number > tasks.size()) {
+        if (number > tasks.size() || number < 0) {
             throw new OutOfBoundsTaskException();
         }
 
@@ -79,6 +125,11 @@ public class TaskList {
         return printString;
     }
 
+    /**
+     * Returns the current tasks, formatted nicely
+     *
+     * @return Current tasks String
+     */
     public String getTaskList() {
         printString = "Here are your current tasks:\n";
         int currentNumber = 1;
@@ -93,6 +144,11 @@ public class TaskList {
         return printString;
     }
 
+    /**
+     * Returns the number of current tasks
+     *
+     * @return Current number of tasks String
+     */
     public String getTaskNumbersString() {
         return "There is/are currently " + String.valueOf(tasks.size()) + " task(s) in the list.\n";
     }

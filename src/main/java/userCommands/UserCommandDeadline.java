@@ -2,6 +2,10 @@ package userCommands;
 
 import utilities.Command;
 
+/**
+ * Concrete class that encapsulates information about the DEADLINE command, including
+ * the name of the task and the deadline of the task
+ */
 public class UserCommandDeadline extends UserCommand {
     private String taskName;
     private String deadline;

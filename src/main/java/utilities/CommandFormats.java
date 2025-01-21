@@ -1,5 +1,9 @@
 package utilities;
 
+/**
+ * Class that contains final String objects of the correct formatting for each command the user
+ * can input
+ */
 public final class CommandFormats {
 
     private CommandFormats() {

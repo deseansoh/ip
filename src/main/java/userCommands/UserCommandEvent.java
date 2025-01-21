@@ -2,6 +2,10 @@ package userCommands;
 
 import utilities.Command;
 
+/**
+ * Concrete class that encapsulates information about the EVENT command, including
+ * the name of the task and the from and to time of the task
+ */
 public class UserCommandEvent extends UserCommand{
     private String taskName;
     private String fromTime;

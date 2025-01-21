@@ -1,5 +1,8 @@
 package utilities;
 
+/**
+ * Class that contains final String objects of commonly used Strings by the chatbot
+ */
 public final class StringConstants {
 
     private StringConstants() {

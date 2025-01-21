@@ -1,5 +1,9 @@
 package tasks;
 
+/**
+ * Concrete class that encapsulates information about an event task. It has the
+ * additional variables fromTime and toTime to keep track of this.
+ */
 public class TaskEvent extends Task {
     private String fromTime;
     private String toTime;

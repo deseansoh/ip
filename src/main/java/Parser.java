@@ -14,11 +14,23 @@ import exceptions.EmptyDescException;
 import exceptions.UnrecognisedKeywordException;
 import exceptions.UnrecognisedCmdException;
 
+/**
+ * This is an uninitializable class with one method, that is used to parse the user input
+ * and return a UserCommand object that contains the details of what the user is trying
+ * to do
+ */
 public class Parser {
     private Parser() {
         // to prevent instantiation
     }
 
+    /**
+     * Returns a UserCommand object with the details of the input after parsing them
+     *
+     * @param userInput String object of what the user input to the chatbot
+     * @return UserCommand object that contains details of the user input
+     * @throws ThoughtBotException If there is something wrong with the formatting of user input
+     */
     public static UserCommand parseInput(String userInput) throws ThoughtBotException {
         userInput = userInput.toLowerCase();
         String firstWord = userInput.split(" ")[0];
