@@ -22,6 +22,14 @@ public class TaskList {
     }
 
     /**
+     * Adds a task to the tasks ArrayList, without any return. This is mainly used by the load function in SaveLoad
+     * @param t The task to be added
+     */
+    public void addTask(Task t) {
+        this.tasks.add(t);
+    }
+
+    /**
      * Adds a Todo Task to the tasks ArrayList and returns the corresponding response
      *
      * @param entryName Name of the task to be added

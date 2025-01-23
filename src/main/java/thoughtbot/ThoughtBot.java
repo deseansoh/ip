@@ -21,7 +21,7 @@ public class ThoughtBot {
     public static void main(String[] args) {
         String userInput;
         Scanner userInputScanner = new Scanner(System.in);
-        TaskList myList = new TaskList();
+        TaskList myList = SaveLoad.load();
         String printString = "";
 
         greet();
