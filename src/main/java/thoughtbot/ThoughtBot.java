@@ -73,6 +73,7 @@ public class ThoughtBot {
             }
         }
 
+        SaveLoad.save(myList);
         goodbye();
     }
 

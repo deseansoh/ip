@@ -30,7 +30,7 @@ public class TaskList {
     public String addTodo(String entryName) {
         Task tTodo = new TaskToDo(entryName);
         this.tasks.add(tTodo);
-        return "Added task:\n" + tTodo.getName() + "\n";
+        return "Added task:\n" + tTodo.getFullName() + "\n";
     }
 
     /**
@@ -42,7 +42,7 @@ public class TaskList {
     public String addDeadline(String entryName, String deadline) {
         Task tDeadline = new TaskDeadline(entryName, deadline);
         this.tasks.add(tDeadline);
-        return "Added task:\n" + tDeadline.getName() + "\n";
+        return "Added task:\n" + tDeadline.getFullName() + "\n";
     }
 
     /**
@@ -54,7 +54,7 @@ public class TaskList {
     public String addEvent(String entryName, String fromTime, String toTime) {
         Task tEvent = new TaskEvent(entryName, fromTime, toTime);
         this.tasks.add(tEvent);
-        return "Added task:\n" + tEvent.getName() + "\n";
+        return "Added task:\n" + tEvent.getFullName() + "\n";
     }
 
     /**
@@ -74,7 +74,7 @@ public class TaskList {
         Task taskToMark = tasks.get(number - 1);
         boolean marked = taskToMark.markDone();
         if (marked) {
-            printString += "I have marked this task as done.\n" + taskToMark.getName();
+            printString += "I have marked this task as done.\n" + taskToMark.getFullName();
         } else {
             printString += "This task has already been marked.";
         }
@@ -99,7 +99,7 @@ public class TaskList {
         Task taskToUnmark = tasks.get(number - 1);
         boolean unmarked = taskToUnmark.unmarkDone();
         if (unmarked) {
-            printString += "I have unmarked this task as done.\n" + taskToUnmark.getName();
+            printString += "I have unmarked this task as done.\n" + taskToUnmark.getFullName();
         } else {
             printString += "This task has already been unmarked.";
         }
@@ -122,7 +122,7 @@ public class TaskList {
         }
 
         Task taskToDelete = tasks.get(number - 1);
-        printString = "I have deleted this task:\n" + taskToDelete.getName() + "\n";
+        printString = "I have deleted this task:\n" + taskToDelete.getFullName() + "\n";
         tasks.remove(taskToDelete);
         return printString;
     }
@@ -140,7 +140,7 @@ public class TaskList {
             String numberString = String.valueOf(currentNumber);
             currentNumber++;
 
-            printString = printString + numberString + ". " + e.getName() + "\n";
+            printString = printString + numberString + ". " + e.getFullName() + "\n";
         }
 
         return printString;
@@ -153,5 +153,9 @@ public class TaskList {
      */
     public String getTaskNumbersString() {
         return "There is/are currently " + String.valueOf(tasks.size()) + " task(s) in the list.\n";
+    }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
     }
 }

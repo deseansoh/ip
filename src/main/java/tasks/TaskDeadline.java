@@ -13,7 +13,11 @@ public class TaskDeadline extends Task {
     }
 
     @Override
-    public String getName() {
-        return "[D]" + super.getName() + " (by: " + deadline + ")";
+    public String getFullName() {
+        return "[D]" + super.getFullName() + " (by: " + deadline + ")";
+    }
+
+    public String getDeadline() {
+        return deadline;
     }
 }

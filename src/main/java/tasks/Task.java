@@ -44,11 +44,19 @@ public abstract class Task {
         return false;
     }
 
-    public String getName() {
+    public String getFullName() {
         if (done) {
             return "[X] " + this.name;
         }
 
         return "[ ] " + this.name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean getDone() {
+        return done;
     }
 }

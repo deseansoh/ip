@@ -15,7 +15,15 @@ public class TaskEvent extends Task {
     }
 
     @Override
-    public String getName() {
-        return "[E]" + super.getName() + " (from: " + fromTime + " | to: " + toTime + ")";
+    public String getFullName() {
+        return "[E]" + super.getFullName() + " (from: " + fromTime + " | to: " + toTime + ")";
+    }
+
+    public String getFromTime() {
+        return fromTime;
+    }
+
+    public String getToTime() {
+        return toTime;
     }
 }
