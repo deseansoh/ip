@@ -46,6 +46,7 @@ public class TaskList {
      * Adds a Deadline Task to the tasks ArrayList and returns the corresponding response
      *
      * @param entryName Name of the task to be added
+     * @param deadline Deadline of the task
      * @return Response after adding task
      */
     public String addDeadline(String entryName, LocalDateTime deadline) {
@@ -58,6 +59,8 @@ public class TaskList {
      * Adds an Event Task to the tasks ArrayList and returns the corresponding response
      *
      * @param entryName Name of the task to be added
+     * @param fromTime Start time of the task
+     * @param toTime End time of the task
      * @return Response after adding task
      */
     public String addEvent(String entryName, String fromTime, String toTime) {

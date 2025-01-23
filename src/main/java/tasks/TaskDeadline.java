@@ -20,6 +20,10 @@ public class TaskDeadline extends Task {
         return "[D]" + super.getFullName() + " (by: " + getDeadline() + ")";
     }
 
+    /**
+     * Formats the deadline in the correct string format and returns it
+     * @return Formatted deadline
+     */
     public String getDeadline() {
         String year = String.format("%04d", deadline.getYear());
         String month = String.format("%02d", deadline.getMonthValue());
