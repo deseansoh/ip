@@ -1,23 +1,31 @@
 package tasks;
 
+
+import java.time.LocalDateTime;
+
 /**
  * Concrete class that encapsulates information about a task with deadline. It has the
  * additional variable deadline to keep track of this.
  */
 public class TaskDeadline extends Task {
-    private String deadline;
+    private LocalDateTime deadline;
 
-    public TaskDeadline(String name, String deadline) {
+    public TaskDeadline(String name, LocalDateTime deadline) {
         super(name);
         this.deadline = deadline;
     }
 
     @Override
     public String getFullName() {
-        return "[D]" + super.getFullName() + " (by: " + deadline + ")";
+        return "[D]" + super.getFullName() + " (by: " + getDeadline() + ")";
     }
 
     public String getDeadline() {
-        return deadline;
+        String year = String.format("%04d", deadline.getYear());
+        String month = String.format("%02d", deadline.getMonthValue());
+        String day = String.format("%02d", deadline.getDayOfMonth());
+        String hour = String.format("%02d", deadline.getHour());
+        String minute = String.format("%02d", deadline.getMinute());
+        return year + "-" + month + "-" + day + " " + hour + ":" + minute;
     }
 }
