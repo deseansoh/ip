@@ -18,14 +18,27 @@ public class TaskEvent extends Task {
 
     @Override
     public String getFullName() {
-        return "[E]" + super.getFullName() + " (from: " + fromTime + " | to: " + toTime + ")";
+        return "[E]" + super.getFullName() + " (from: " + getFromTime() + " | to: " + getToTime() + ")";
     }
 
     public String getFromTime() {
-        return fromTime;
+        return getFormattedTime(fromTime);
     }
 
     public String getToTime() {
-        return toTime;
+        return getFormattedTime(toTime);
+    }
+
+    /**
+     * Formats datetime in the correct string format and returns it
+     * @return Formatted deadline
+     */
+    public String getFormattedTime(LocalDateTime dateTime) {
+        String year = String.format("%04d", dateTime.getYear());
+        String month = String.format("%02d", dateTime.getMonthValue());
+        String day = String.format("%02d", dateTime.getDayOfMonth());
+        String hour = String.format("%02d", dateTime.getHour());
+        String minute = String.format("%02d", dateTime.getMinute());
+        return year + "-" + month + "-" + day + " " + hour + ":" + minute;
     }
 }
