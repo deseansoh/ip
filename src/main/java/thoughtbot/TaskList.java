@@ -1,5 +1,6 @@
 package thoughtbot;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import tasks.Task;
@@ -47,7 +48,7 @@ public class TaskList {
      * @param entryName Name of the task to be added
      * @return Response after adding task
      */
-    public String addDeadline(String entryName, String deadline) {
+    public String addDeadline(String entryName, LocalDateTime deadline) {
         Task tDeadline = new TaskDeadline(entryName, deadline);
         this.tasks.add(tDeadline);
         return "Added task:\n" + tDeadline.getFullName() + "\n";
