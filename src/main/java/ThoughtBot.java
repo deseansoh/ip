@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 import utilities.StringConstants;
 
-import userCommands.UserCommand;
-import userCommands.UserCommandTodo;
-import userCommands.UserCommandDeadline;
-import userCommands.UserCommandEvent;
-import userCommands.UserCommandDelete;
-import userCommands.UserCommandMarkUnmark;
+import usercommands.UserCommand;
+import usercommands.UserCommandTodo;
+import usercommands.UserCommandDeadline;
+import usercommands.UserCommandEvent;
+import usercommands.UserCommandDelete;
+import usercommands.UserCommandMarkUnmark;
 
 import exceptions.ThoughtBotException;
 

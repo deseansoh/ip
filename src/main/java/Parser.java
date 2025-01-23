@@ -1,13 +1,13 @@
 import utilities.Command;
 import utilities.CommandFormats;
 
-import userCommands.UserCommand;
-import userCommands.UserCommandList;
-import userCommands.UserCommandTodo;
-import userCommands.UserCommandDeadline;
-import userCommands.UserCommandEvent;
-import userCommands.UserCommandMarkUnmark;
-import userCommands.UserCommandDelete;
+import usercommands.UserCommand;
+import usercommands.UserCommandList;
+import usercommands.UserCommandTodo;
+import usercommands.UserCommandDeadline;
+import usercommands.UserCommandEvent;
+import usercommands.UserCommandMarkUnmark;
+import usercommands.UserCommandDelete;
 
 import exceptions.ThoughtBotException;
 import exceptions.EmptyDescException;
