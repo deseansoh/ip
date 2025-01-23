@@ -67,12 +67,14 @@ public class Parser {
 
             String deadlineTaskName = splitDeadline[1];
             String deadlineString = splitSlashBy[1];
+
             LocalDateTime deadlineDateTime;
             try {
                 deadlineDateTime = LocalDateTime.parse(deadlineString, formatter);
             } catch (DateTimeParseException e) {
                 throw new DateTimeFormatException();
             }
+
             return new UserCommandDeadline(deadlineTaskName, deadlineDateTime);
         case "event":
             if (!userInput.contains(" /from ") || !userInput.contains(" /to ")) {
@@ -88,7 +90,17 @@ public class Parser {
             String eventTaskName = splitSlashFrom[0].split(" ", 2)[1];
             String eventFrom = splitSlashTo[0];
             String eventTo = splitSlashTo[1];
-            return new UserCommandEvent(eventTaskName, eventFrom, eventTo);
+
+            LocalDateTime fromDateTime;
+            LocalDateTime toDateTime;
+            try {
+                fromDateTime = LocalDateTime.parse(eventFrom, formatter);
+                toDateTime = LocalDateTime.parse(eventTo, formatter);
+            } catch (DateTimeParseException e) {
+                throw new DateTimeFormatException();
+            }
+
+            return new UserCommandEvent(eventTaskName, fromDateTime, toDateTime);
         case "mark":
             try {
                 int markNumber = Integer.parseInt(userInput.split(" ", 2)[1]);

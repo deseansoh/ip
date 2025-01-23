@@ -145,17 +145,21 @@ public class SaveLoad {
             } catch (ArrayIndexOutOfBoundsException e) {
                 throw new LoadErrorException("A deadline task does not have a valid number of parameters.");
             } catch (DateTimeParseException e) {
-                throw new LoadErrorException("A deadline task has a wrongly formatted datetime");
+                throw new LoadErrorException("A deadline task has a wrongly formatted datetime.");
             }
         case "E":
             try {
                 String fromTime = splitSections[3];
                 String toTime = splitSections[4];
-                TaskEvent tEvent = new TaskEvent(name, fromTime, toTime);
+                LocalDateTime fromDateTime = LocalDateTime.parse(fromTime, formatter);
+                LocalDateTime toDateTime = LocalDateTime.parse(toTime, formatter);
+                TaskEvent tEvent = new TaskEvent(name, fromDateTime, toDateTime);
                 markOrNotDone(tEvent, done);
                 return tEvent;
             } catch (ArrayIndexOutOfBoundsException e) {
                 throw new LoadErrorException("An event task does not have a valid number of parameters.");
+            } catch (DateTimeParseException e) {
+                throw new LoadErrorException("An event task has a wrongly formatted datetime.");
             }
         }
 
