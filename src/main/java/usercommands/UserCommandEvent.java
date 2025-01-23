@@ -1,4 +1,4 @@
-package userCommands;
+package usercommands;
 
 import utilities.Command;
 

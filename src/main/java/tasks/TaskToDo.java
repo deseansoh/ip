@@ -9,7 +9,7 @@ public class TaskToDo extends Task {
     }
 
     @Override
-    public String getName() {
-        return "[T]" + super.getName();
+    public String getFullName() {
+        return "[T]" + super.getFullName();
     }
 }
