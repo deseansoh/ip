@@ -24,11 +24,11 @@ public class UserCommandEvent extends UserCommand{
         return this.taskName;
     }
 
-    public String getFromTime() {
+    public LocalDateTime getFromTime() {
         return this.fromTime;
     }
 
-    public String getToTime() {
+    public LocalDateTime getToTime() {
         return this.toTime;
     }
 }
