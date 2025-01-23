@@ -63,7 +63,7 @@ public class TaskList {
      * @param toTime End time of the task
      * @return Response after adding task
      */
-    public String addEvent(String entryName, String fromTime, String toTime) {
+    public String addEvent(String entryName, LocalDateTime fromTime, LocalDateTime toTime) {
         Task tEvent = new TaskEvent(entryName, fromTime, toTime);
         this.tasks.add(tEvent);
         return "Added task:\n" + tEvent.getFullName() + "\n";
