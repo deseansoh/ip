@@ -1,3 +1,5 @@
+package thoughtbot;
+
 import java.util.ArrayList;
 
 import tasks.Task;
@@ -8,7 +10,7 @@ import tasks.TaskEvent;
 import exceptions.OutOfBoundsTaskException;
 
 /**
- * The TaskList object that keeps track of the Entry objects the user has currently added.
+ * The thoughtbot.TaskList object that keeps track of the Entry objects the user has currently added.
  * This object also manages all the operations on the Entries itself.
  */
 public class TaskList {

@@ -1,3 +1,5 @@
+package thoughtbot;
+
 import java.util.Scanner;
 
 import utilities.StringConstants;

@@ -1,3 +1,5 @@
+package thoughtbot;
+
 import utilities.Command;
 import utilities.CommandFormats;
 
