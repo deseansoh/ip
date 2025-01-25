@@ -1,6 +1,5 @@
 package tasks;
 
-
 import java.time.LocalDateTime;
 
 /**
@@ -10,6 +9,11 @@ import java.time.LocalDateTime;
 public class TaskDeadline extends Task {
     private LocalDateTime deadline;
 
+    /**
+     * Constructor for the TaskDeadline class
+     * @param name Name of the task
+     * @param deadline Deadline of the task
+     */
     public TaskDeadline(String name, LocalDateTime deadline) {
         super(name);
         this.deadline = deadline;

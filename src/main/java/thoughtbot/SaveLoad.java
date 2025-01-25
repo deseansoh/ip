@@ -1,20 +1,19 @@
 package thoughtbot;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.util.Scanner;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import java.io.IOException;
-import java.io.FileNotFoundException;
 import java.time.format.DateTimeParseException;
-import exceptions.LoadErrorException;
+import java.util.Scanner;
 
+import exceptions.LoadErrorException;
 import tasks.Task;
-import tasks.TaskToDo;
 import tasks.TaskDeadline;
 import tasks.TaskEvent;
+import tasks.TaskToDo;
 
 /**
  * This is an uninitializable class meant to handle the saving and loading of TaskLists from the user's
@@ -31,7 +30,7 @@ public class SaveLoad {
 
     /**
      * Saves the currentTaskList to the relative path ./data/thoughtbot.txt, in the format of
-     * <taskType> | <doneOrNot> | <taskName> | <otherParameters>
+     * taskType | doneOrNot | taskName | otherParameters
      * @param currentTaskList Task:ist to be saved to the hard disk
      */
     public static void save(TaskList currentTaskList) {
@@ -161,9 +160,9 @@ public class SaveLoad {
             } catch (DateTimeParseException e) {
                 throw new LoadErrorException("An event task has a wrongly formatted datetime.");
             }
+        default:
+            throw new LoadErrorException("The type of entry in the save file is corrupted.");
         }
-
-        throw new LoadErrorException("The type of entry in the save file is corrupted.");
     }
 
     /**

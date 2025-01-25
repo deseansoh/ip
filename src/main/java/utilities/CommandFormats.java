@@ -5,11 +5,6 @@ package utilities;
  * can input
  */
 public final class CommandFormats {
-
-    private CommandFormats() {
-        // to prevent instantiation
-    }
-
     public static final String LIST = "list";
     public static final String TODO = "todo <task description>";
     public static final String DEADLINE = "deadline <task description> /by YYYY-MM-DD HH:MM";
@@ -18,4 +13,8 @@ public final class CommandFormats {
     public static final String UNMARK = "unmark <task index number>";
     public static final String DELETE = "delete <task index number>";
     public static final String BYE = "bye";
+
+    private CommandFormats() {
+        // to prevent instantiation
+    }
 }

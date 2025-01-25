@@ -3,12 +3,11 @@ package thoughtbot;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import exceptions.OutOfBoundsTaskException;
 import tasks.Task;
-import tasks.TaskToDo;
 import tasks.TaskDeadline;
 import tasks.TaskEvent;
-
-import exceptions.OutOfBoundsTaskException;
+import tasks.TaskToDo;
 
 /**
  * The thoughtbot.TaskList object that keeps track of the Entry objects the user has currently added.
@@ -16,7 +15,7 @@ import exceptions.OutOfBoundsTaskException;
  */
 public class TaskList {
     private ArrayList<Task> tasks;
-    String printString = "";
+    private String printString = "";
 
     public TaskList() {
         this.tasks = new ArrayList<>(100);
@@ -77,7 +76,7 @@ public class TaskList {
      * @return Response after marking task
      * @throws OutOfBoundsTaskException If number is > size of tasks ArrayList
      */
-    public String markEntry(int number) throws OutOfBoundsTaskException{
+    public String markEntry(int number) throws OutOfBoundsTaskException {
         printString = "";
         if (number > tasks.size() || number < 0) {
             throw new OutOfBoundsTaskException();
@@ -102,7 +101,7 @@ public class TaskList {
      * @return Response after unmarking task
      * @throws OutOfBoundsTaskException If number is > size of tasks ArrayList
      */
-    public String unmarkEntry(int number) throws OutOfBoundsTaskException{
+    public String unmarkEntry(int number) throws OutOfBoundsTaskException {
         printString = "";
         if (number > tasks.size() || number < 0) {
             throw new OutOfBoundsTaskException();
@@ -127,7 +126,7 @@ public class TaskList {
      * @return Response after deleting task
      * @throws OutOfBoundsTaskException If number is > size of tasks ArrayList
      */
-    public String deleteTask(int number) throws OutOfBoundsTaskException{
+    public String deleteTask(int number) throws OutOfBoundsTaskException {
         printString = "";
         if (number > tasks.size() || number < 0) {
             throw new OutOfBoundsTaskException();

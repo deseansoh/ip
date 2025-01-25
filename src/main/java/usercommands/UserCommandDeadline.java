@@ -1,8 +1,8 @@
 package usercommands;
 
-import utilities.Command;
-
 import java.time.LocalDateTime;
+
+import utilities.Command;
 
 /**
  * Concrete class that encapsulates information about the DEADLINE command, including
@@ -12,6 +12,11 @@ public class UserCommandDeadline extends UserCommand {
     private String taskName;
     private LocalDateTime deadline;
 
+    /**
+     * Constructor for the UserCommandDeadline class
+     * @param taskName Name of the task in the input
+     * @param deadline Deadline given in the input
+     */
     public UserCommandDeadline(String taskName, LocalDateTime deadline) {
         super(Command.DEADLINE);
         this.taskName = taskName;

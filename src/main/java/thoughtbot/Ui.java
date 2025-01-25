@@ -2,26 +2,27 @@ package thoughtbot;
 
 import java.util.Scanner;
 
-import utilities.StringConstants;
-
-import usercommands.UserCommand;
-import usercommands.UserCommandTodo;
-import usercommands.UserCommandDeadline;
-import usercommands.UserCommandEvent;
-import usercommands.UserCommandDelete;
-import usercommands.UserCommandMarkUnmark;
-
 import exceptions.ThoughtBotException;
+import usercommands.UserCommand;
+import usercommands.UserCommandDeadline;
+import usercommands.UserCommandDelete;
+import usercommands.UserCommandEvent;
+import usercommands.UserCommandMarkUnmark;
+import usercommands.UserCommandTodo;
+import utilities.StringConstants;
 
 /**
  * This is the UI class that handles everything related to interfacing with the user. All command
  * checks and verification is done here.
  */
 public class Ui {
-    String userInput;
-    Scanner userInputScanner;
-    String printString;
+    private String userInput;
+    private Scanner userInputScanner;
+    private String printString;
 
+    /**
+     * Constructor for the Ui class
+     */
     public Ui() {
         this.userInput = "";
         this.userInputScanner = new Scanner(System.in);
@@ -78,6 +79,8 @@ public class Ui {
                 case UNMARK:
                     UserCommandMarkUnmark unmark = (UserCommandMarkUnmark) uc;
                     printString = myList.unmarkEntry(unmark.getMarkUnmarkNumber());
+                    break;
+                default:
                     break;
                 }
             } catch (ThoughtBotException e) {

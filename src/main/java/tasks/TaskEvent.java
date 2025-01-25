@@ -10,6 +10,12 @@ public class TaskEvent extends Task {
     private LocalDateTime fromTime;
     private LocalDateTime toTime;
 
+    /**
+     * Constructor for the TaskEvent class
+     * @param name Name of the task
+     * @param fromTime Time that the task starts
+     * @param toTime Time that the task ends
+     */
     public TaskEvent(String name, LocalDateTime fromTime, LocalDateTime toTime) {
         super(name);
         this.fromTime = fromTime;
