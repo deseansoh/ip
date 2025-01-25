@@ -84,8 +84,8 @@ public class TaskList {
         }
 
         Task taskToMark = tasks.get(number - 1);
-        boolean marked = taskToMark.markDone();
-        if (marked) {
+        boolean isMarked = taskToMark.markDone();
+        if (isMarked) {
             printString += "I have marked this task as done.\n" + taskToMark.getFullName();
         } else {
             printString += "This task has already been marked.";
@@ -109,8 +109,8 @@ public class TaskList {
         }
 
         Task taskToUnmark = tasks.get(number - 1);
-        boolean unmarked = taskToUnmark.unmarkDone();
-        if (unmarked) {
+        boolean isUnmarked = taskToUnmark.unmarkDone();
+        if (isUnmarked) {
             printString += "I have unmarked this task as done.\n" + taskToUnmark.getFullName();
         } else {
             printString += "This task has already been unmarked.";

@@ -7,11 +7,11 @@ package tasks;
  */
 public abstract class Task {
     private String name;
-    private boolean done;
+    private boolean isDone;
 
     public Task(String name) {
         this.name = name;
-        this.done = false;
+        this.isDone = false;
     }
 
     /**
@@ -21,8 +21,8 @@ public abstract class Task {
      * @return True if changed from unmarked to marked, false if remain as marked
      */
     public boolean markDone() {
-        if (!done) {
-            this.done = true;
+        if (!isDone) {
+            this.isDone = true;
             return true;
         }
 
@@ -36,8 +36,8 @@ public abstract class Task {
      * @return True if changed from marked to unmarked, false if remain as unmarked
      */
     public boolean unmarkDone() {
-        if (done) {
-            this.done = false;
+        if (isDone) {
+            this.isDone = false;
             return true;
         }
 
@@ -45,7 +45,7 @@ public abstract class Task {
     }
 
     public String getFullName() {
-        if (done) {
+        if (isDone) {
             return "[X] " + this.name;
         }
 
@@ -57,6 +57,6 @@ public abstract class Task {
     }
 
     public boolean getDone() {
-        return done;
+        return isDone;
     }
 }
