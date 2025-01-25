@@ -3,9 +3,12 @@ package thoughtbot;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.time.format.DateTimeParseException;
 import exceptions.LoadErrorException;
 
 import tasks.Task;
@@ -20,6 +23,7 @@ import tasks.TaskEvent;
 public class SaveLoad {
     private static final String absoluteFilePath = new File("").getAbsolutePath();
     private static final String relativeFilePath = "/data/thoughtbot.txt";
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     private SaveLoad() {
         // to prevent instantiation
@@ -134,21 +138,28 @@ public class SaveLoad {
         case "D":
             try {
                 String deadline = splitSections[3];
-                TaskDeadline tDeadline = new TaskDeadline(name, deadline);
+                LocalDateTime deadlineDateTime = LocalDateTime.parse(deadline, formatter);
+                TaskDeadline tDeadline = new TaskDeadline(name, deadlineDateTime);
                 markOrNotDone(tDeadline, done);
                 return tDeadline;
             } catch (ArrayIndexOutOfBoundsException e) {
-                throw new LoadErrorException("A deadline task does not have valid parameters.");
+                throw new LoadErrorException("A deadline task does not have a valid number of parameters.");
+            } catch (DateTimeParseException e) {
+                throw new LoadErrorException("A deadline task has a wrongly formatted datetime.");
             }
         case "E":
             try {
                 String fromTime = splitSections[3];
                 String toTime = splitSections[4];
-                TaskEvent tEvent = new TaskEvent(name, fromTime, toTime);
+                LocalDateTime fromDateTime = LocalDateTime.parse(fromTime, formatter);
+                LocalDateTime toDateTime = LocalDateTime.parse(toTime, formatter);
+                TaskEvent tEvent = new TaskEvent(name, fromDateTime, toDateTime);
                 markOrNotDone(tEvent, done);
                 return tEvent;
             } catch (ArrayIndexOutOfBoundsException e) {
-                throw new LoadErrorException("An event task does not have valid parameters.");
+                throw new LoadErrorException("An event task does not have a valid number of parameters.");
+            } catch (DateTimeParseException e) {
+                throw new LoadErrorException("An event task has a wrongly formatted datetime.");
             }
         }
 

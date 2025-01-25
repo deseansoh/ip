@@ -2,16 +2,18 @@ package usercommands;
 
 import utilities.Command;
 
+import java.time.LocalDateTime;
+
 /**
  * Concrete class that encapsulates information about the EVENT command, including
  * the name of the task and the from and to time of the task
  */
 public class UserCommandEvent extends UserCommand{
     private String taskName;
-    private String fromTime;
-    private String toTime;
+    private LocalDateTime fromTime;
+    private LocalDateTime toTime;
 
-    public UserCommandEvent(String taskName, String fromString, String toString) {
+    public UserCommandEvent(String taskName, LocalDateTime fromString, LocalDateTime toString) {
         super(Command.EVENT);
         this.taskName = taskName;
         this.fromTime = fromString;
@@ -22,11 +24,11 @@ public class UserCommandEvent extends UserCommand{
         return this.taskName;
     }
 
-    public String getFromTime() {
+    public LocalDateTime getFromTime() {
         return this.fromTime;
     }
 
-    public String getToTime() {
+    public LocalDateTime getToTime() {
         return this.toTime;
     }
 }
