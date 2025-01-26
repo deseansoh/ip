@@ -14,14 +14,14 @@ public class TaskEventTest {
 
     @BeforeEach
     public void initialize() {
-        task = new TaskEvent("Meet friends",
+        task = new TaskEvent("meet friends",
                 LocalDateTime.parse("2000-01-01 12:00", formatter),
                 LocalDateTime.parse("2000-01-01 18:00", formatter));
     }
 
     @Test
     public void getFullName_functionCall_success() {
-        String expectedName = "[E][ ] Meet friends (from: 2000-01-01 12:00 | to: 2000-01-01 18:00)";
+        String expectedName = "[E][ ] meet friends (from: 2000-01-01 12:00 | to: 2000-01-01 18:00)";
         assertEquals(expectedName, task.getFullName());
     }
 
@@ -39,14 +39,14 @@ public class TaskEventTest {
 
     @Test
     public void markDone_functionCall_success() {
-        String expectedName = "[E][X] Meet friends (from: 2000-01-01 12:00 | to: 2000-01-01 18:00)";
+        String expectedName = "[E][X] meet friends (from: 2000-01-01 12:00 | to: 2000-01-01 18:00)";
         task.markDone();
         assertEquals(expectedName, task.getFullName());
     }
 
     @Test
     public void unmarkDone_functionCall_success() {
-        String expectedName = "[E][ ] Meet friends (from: 2000-01-01 12:00 | to: 2000-01-01 18:00)";
+        String expectedName = "[E][ ] meet friends (from: 2000-01-01 12:00 | to: 2000-01-01 18:00)";
         task.markDone();
         task.unmarkDone();
         assertEquals(expectedName, task.getFullName());
@@ -54,7 +54,7 @@ public class TaskEventTest {
 
     @Test
     public void getName_functionCall_success() {
-        String expectedName = "Meet friends";
+        String expectedName = "meet friends";
         assertEquals(expectedName, task.getName());
     }
 

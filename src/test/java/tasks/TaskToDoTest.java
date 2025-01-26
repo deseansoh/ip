@@ -10,25 +10,25 @@ public class TaskToDoTest {
 
     @BeforeEach
     public void initialize() {
-        task = new TaskToDo("Eat food");
+        task = new TaskToDo("eat food");
     }
 
     @Test
     public void getFullName_functionCall_success() {
-        String expectedName = "[T][ ] Eat food";
+        String expectedName = "[T][ ] eat food";
         assertEquals(expectedName, task.getFullName());
     }
 
     @Test
     public void markDone_functionCall_success() {
-        String expectedName = "[T][X] Eat food";
+        String expectedName = "[T][X] eat food";
         task.markDone();
         assertEquals(expectedName, task.getFullName());
     }
 
     @Test
     public void unmarkDone_functionCall_success() {
-        String expectedName = "[T][ ] Eat food";
+        String expectedName = "[T][ ] eat food";
         task.markDone();
         task.unmarkDone();
         assertEquals(expectedName, task.getFullName());
@@ -36,7 +36,7 @@ public class TaskToDoTest {
 
     @Test
     public void getName_functionCall_success() {
-        String expectedName = "Eat food";
+        String expectedName = "eat food";
         assertEquals(expectedName, task.getName());
     }
 

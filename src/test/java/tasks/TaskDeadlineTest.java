@@ -14,13 +14,13 @@ public class TaskDeadlineTest {
 
     @BeforeEach
     public void initialize() {
-         task = new TaskDeadline("Do homework",
+         task = new TaskDeadline("do homework",
                  LocalDateTime.parse("2000-01-01 12:00", formatter));
     }
 
     @Test
     public void getFullName_functionCall_success() {
-        String expectedName = "[D][ ] Do homework (by: 2000-01-01 12:00)";
+        String expectedName = "[D][ ] do homework (by: 2000-01-01 12:00)";
         assertEquals(expectedName, task.getFullName());
     }
 
@@ -32,14 +32,14 @@ public class TaskDeadlineTest {
 
     @Test
     public void markDone_functionCall_success() {
-        String expectedName = "[D][X] Do homework (by: 2000-01-01 12:00)";
+        String expectedName = "[D][X] do homework (by: 2000-01-01 12:00)";
         task.markDone();
         assertEquals(expectedName, task.getFullName());
     }
 
     @Test
     public void unmarkDone_functionCall_success() {
-        String expectedName = "[D][ ] Do homework (by: 2000-01-01 12:00)";
+        String expectedName = "[D][ ] do homework (by: 2000-01-01 12:00)";
         task.markDone();
         task.unmarkDone();
         assertEquals(expectedName, task.getFullName());
@@ -47,7 +47,7 @@ public class TaskDeadlineTest {
 
     @Test
     public void getName_functionCall_success() {
-        String expectedName = "Do homework";
+        String expectedName = "do homework";
         assertEquals(expectedName, task.getName());
     }
 
