@@ -7,18 +7,18 @@ import utilities.Command;
  * the word to be matched
  */
 public class UserCommandFind extends UserCommand {
-    public String taskWord;
+    public String findString;
 
     /**
      * Constructor for the UserCommandFind class
-     * @param taskWord String to be matched
+     * @param findString String to be matched
      */
-    public UserCommandFind(String taskWord) {
+    public UserCommandFind(String findString) {
         super(Command.FIND);
-        this.taskWord = taskWord;
+        this.findString = findString;
     }
 
-    public String getTaskWord() {
-        return taskWord;
+    public String getFindString() {
+        return findString;
     }
 }
