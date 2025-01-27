@@ -1,7 +1,7 @@
 package thoughtbot;
 
 /**
- * The ThoughBot class is the main class for the chatbot that helps you
+ * The ThoughtBot class is the main class for the chatbot that helps you
  * keep track of tasks.
  */
 public class ThoughtBot {
