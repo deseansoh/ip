@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import exceptions.OutOfBoundsTaskException;
+import exceptions.TaskNotFoundException;
 import tasks.Task;
 import tasks.TaskDeadline;
 import tasks.TaskEvent;
@@ -136,6 +137,23 @@ public class TaskList {
         printString = "I have deleted this task:\n" + taskToDelete.getFullName() + "\n";
         tasks.remove(taskToDelete);
         return printString;
+    }
+
+    public String findTasks(String findString) throws TaskNotFoundException {
+        String introString = "Here are the tasks matching the search for \"" + findString + "\":\n";
+        printString = "";
+        for (Task t: tasks) {
+            String taskName = t.getName();
+            if (taskName.contains(findString.toLowerCase())) {
+                printString += t.getFullName() + "\n";
+            }
+        }
+
+        if (!printString.isBlank()) {
+            return introString + printString;
+        } else {
+            throw new TaskNotFoundException();
+        }
     }
 
     /**

@@ -9,13 +9,7 @@ import exceptions.EmptyDescException;
 import exceptions.ThoughtBotException;
 import exceptions.UnrecognisedCmdException;
 import exceptions.UnrecognisedKeywordException;
-import usercommands.UserCommand;
-import usercommands.UserCommandDeadline;
-import usercommands.UserCommandDelete;
-import usercommands.UserCommandEvent;
-import usercommands.UserCommandList;
-import usercommands.UserCommandMarkUnmark;
-import usercommands.UserCommandTodo;
+import usercommands.*;
 import utilities.Command;
 import utilities.CommandFormats;
 
@@ -119,6 +113,13 @@ public class Parser {
                 return new UserCommandDelete(deleteNumber);
             } catch (ArrayIndexOutOfBoundsException e) {
                 throw new EmptyDescException(CommandFormats.DELETE);
+            }
+        case "find":
+            try {
+                String findString = userInput.split(" ", 2)[1];
+                return new UserCommandFind(findString);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new EmptyDescException(CommandFormats.FIND);
             }
         default:
             throw new UnrecognisedCmdException();

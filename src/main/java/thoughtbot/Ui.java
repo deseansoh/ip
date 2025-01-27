@@ -3,12 +3,7 @@ package thoughtbot;
 import java.util.Scanner;
 
 import exceptions.ThoughtBotException;
-import usercommands.UserCommand;
-import usercommands.UserCommandDeadline;
-import usercommands.UserCommandDelete;
-import usercommands.UserCommandEvent;
-import usercommands.UserCommandMarkUnmark;
-import usercommands.UserCommandTodo;
+import usercommands.*;
 import utilities.StringConstants;
 
 /**
@@ -71,6 +66,10 @@ public class Ui {
                     UserCommandDelete delete = (UserCommandDelete) uc;
                     printString = myList.deleteTask(delete.getDeleteNumber());
                     printString += myList.getTaskNumbersString();
+                    break;
+                case FIND:
+                    UserCommandFind find = (UserCommandFind) uc;
+                    printString = myList.findTasks(find.getFindString());
                     break;
                 case MARK:
                     UserCommandMarkUnmark mark = (UserCommandMarkUnmark) uc;
