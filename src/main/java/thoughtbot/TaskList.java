@@ -139,6 +139,12 @@ public class TaskList {
         return printString;
     }
 
+    /**
+     * Finds the tasks that contain the substring of findString
+     * @param findString Substring to search for in the tasks
+     * @return String containing the tasks that have matched
+     * @throws TaskNotFoundException If there are no tasks with a matching substring
+     */
     public String findTasks(String findString) throws TaskNotFoundException {
         String introString = "Here are the tasks matching the search for \"" + findString + "\":\n";
         printString = "";
