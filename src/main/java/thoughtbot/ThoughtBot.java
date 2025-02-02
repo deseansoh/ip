@@ -23,4 +23,8 @@ public class ThoughtBot {
         SaveLoad.save(myList);
         myUi.goodbye();
     }
+
+    public String getResponse(String input) {
+        return "ThoughtBot heard: " + input;
+    }
 }
