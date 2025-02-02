@@ -1,5 +1,6 @@
 package fx;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -9,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import thoughtbot.ThoughtBot;
+import utilities.StringConstants;
 
 /**
  * Controller for the main GUI.
@@ -31,25 +33,34 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+
+        dialogContainer.getChildren().addAll(
+                DialogBox.getTbDialog(StringConstants.GREETING, thoughtBotImage)
+        );
     }
 
-    /** Injects the Duke instance */
-    public void setDuke(ThoughtBot t) {
+    /** Injects the ThoughtBot instance */
+    public void setThoughtBot(ThoughtBot t) {
         thoughtBot = t;
     }
 
     /**
-     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
-     * the dialog container. Clears the user input after processing.
+     * Creates two dialog boxes, one echoing user input and the other containing ThoughtBot's reply and then appends
+     * them to the dialog container. Clears the user input after processing.
      */
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
         String response = thoughtBot.getResponse(input);
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getTbDialog(response, thoughtBotImage)
-        );
-        userInput.clear();
+
+        if (response.equals("bye given")) {
+            Platform.exit();
+        } else {
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getUserDialog(input, userImage),
+                    DialogBox.getTbDialog(response, thoughtBotImage)
+            );
+            userInput.clear();
+        }
     }
 }
