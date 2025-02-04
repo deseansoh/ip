@@ -7,7 +7,7 @@ import utilities.Command;
  * the word to be matched
  */
 public class UserCommandFind extends UserCommand {
-    public String findString;
+    private String findString;
 
     /**
      * Constructor for the UserCommandFind class

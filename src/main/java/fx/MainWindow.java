@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-
 import thoughtbot.ThoughtBot;
 import utilities.StringConstants;
 
@@ -30,6 +29,9 @@ public class MainWindow extends AnchorPane {
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/userImage.png"));
     private Image thoughtBotImage = new Image(this.getClass().getResourceAsStream("/images/thoughtBotImage.png"));
 
+    /**
+     * Initializes the main window and prints the greeting
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
@@ -39,7 +41,10 @@ public class MainWindow extends AnchorPane {
         );
     }
 
-    /** Injects the ThoughtBot instance */
+    /**
+     * Injects the ThoughtBot instance
+     * @param t ThoughtBot object to e injected
+     */
     public void setThoughtBot(ThoughtBot t) {
         thoughtBot = t;
     }
