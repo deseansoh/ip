@@ -7,7 +7,7 @@ import javafx.application.Application;
  */
 public class Launcher {
     /**
-     * Starts the JavaFX application
+     * Starts the JavaFX application and opens a new window
      * @param args Arguments provided from CLI
      */
     public static void main(String[] args) {
