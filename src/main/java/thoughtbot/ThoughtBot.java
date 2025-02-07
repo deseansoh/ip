@@ -66,6 +66,8 @@ public class ThoughtBot {
             } finally {
                 System.out.println(responseString);
             }
+            assert !responseString.isBlank(): "Blank response was given by the ThoughtBot class";
+
             return responseString;
         } else {
             SaveLoad.save(myList);
