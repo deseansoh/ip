@@ -129,9 +129,9 @@ public class SaveLoad {
         String done = splitSections[1];
         String name = splitSections[2];
 
-        assert !type.isBlank(): "No type in load file but LoadErrorException wasn't thrown";
-        assert !done.isBlank(): "No done in load file but LoadErrorException wasn't thrown";
-        assert !name.isBlank(): "No name in load file but LoadErrorException wasn't thrown";
+        assert !type.isBlank() : "No type in load file but LoadErrorException wasn't thrown";
+        assert !done.isBlank() : "No done in load file but LoadErrorException wasn't thrown";
+        assert !name.isBlank() : "No name in load file but LoadErrorException wasn't thrown";
 
         switch (type) {
         case "T":

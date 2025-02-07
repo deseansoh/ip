@@ -66,7 +66,7 @@ public class ThoughtBot {
             } finally {
                 System.out.println(responseString);
             }
-            assert !responseString.isBlank(): "Blank response was given by the ThoughtBot class";
+            assert !responseString.isBlank() : "Blank response was given by the ThoughtBot class";
 
             return responseString;
         } else {

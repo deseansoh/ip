@@ -1,7 +1,12 @@
 package thoughtbot;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import org.junit.jupiter.api.Test;
 
 import exceptions.DateTimeFormatException;
 import exceptions.EmptyDescException;
@@ -11,11 +16,6 @@ import usercommands.UserCommandDeadline;
 import usercommands.UserCommandList;
 import usercommands.UserCommandTodo;
 import utilities.Command;
-
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ParserTest {
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
