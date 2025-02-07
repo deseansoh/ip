@@ -45,91 +45,184 @@ public class Parser {
 
         switch (firstWord) {
         case "list":
-            return new UserCommandList();
+            return getUserCommandList();
         case "todo":
-            try {
-                String todoTaskName = userInput.split(" ", 2)[1];
-                return new UserCommandTodo(todoTaskName);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                throw new EmptyDescException(CommandFormats.TODO);
-            }
+            return getUserCommandTodo(userInput);
         case "deadline":
-            if (!userInput.contains(" /by ")) {
-                throw new UnrecognisedKeywordException(CommandFormats.DEADLINE);
-            }
-
-            String[] splitSlashBy = userInput.split(" /by ");
-            String [] splitDeadline = splitSlashBy[0].split(" ", 2);
-            if (splitSlashBy.length != 2 || splitDeadline.length != 2) {
-                throw new EmptyDescException(CommandFormats.DEADLINE);
-            }
-
-            String deadlineTaskName = splitDeadline[1];
-            String deadlineString = splitSlashBy[1];
-
-            LocalDateTime deadlineDateTime;
-            try {
-                deadlineDateTime = LocalDateTime.parse(deadlineString, formatter);
-            } catch (DateTimeParseException e) {
-                throw new DateTimeFormatException();
-            }
-
-            return new UserCommandDeadline(deadlineTaskName, deadlineDateTime);
+            return getUserCommandDeadline(userInput);
         case "event":
-            if (!userInput.contains(" /from ") || !userInput.contains(" /to ")) {
-                throw new UnrecognisedKeywordException(CommandFormats.EVENT);
-            }
-
-            String[] splitSlashFrom = userInput.split(" /from ");
-            String[] splitSlashTo = splitSlashFrom[1].split(" /to ");
-            if (splitSlashFrom.length != 2 || splitSlashTo.length != 2) {
-                throw new EmptyDescException(CommandFormats.EVENT);
-            }
-
-            String eventTaskName = splitSlashFrom[0].split(" ", 2)[1];
-            String eventFrom = splitSlashTo[0];
-            String eventTo = splitSlashTo[1];
-
-            LocalDateTime fromDateTime;
-            LocalDateTime toDateTime;
-            try {
-                fromDateTime = LocalDateTime.parse(eventFrom, formatter);
-                toDateTime = LocalDateTime.parse(eventTo, formatter);
-            } catch (DateTimeParseException e) {
-                throw new DateTimeFormatException();
-            }
-
-            return new UserCommandEvent(eventTaskName, fromDateTime, toDateTime);
+            return getUserCommandEvent(userInput);
         case "mark":
-            try {
-                int markNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
-                return new UserCommandMarkUnmark(Command.MARK, markNumber);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                throw new EmptyDescException(CommandFormats.MARK);
-            }
+            return getUserCommandMarkUnmark(userInput);
         case "unmark":
-            try {
-                int unmarkNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
-                return new UserCommandMarkUnmark(Command.UNMARK, unmarkNumber);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                throw new EmptyDescException(CommandFormats.UNMARK);
-            }
+            return getCommandMarkUnmark(userInput);
         case "delete":
-            try {
-                int deleteNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
-                return new UserCommandDelete(deleteNumber);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                throw new EmptyDescException(CommandFormats.DELETE);
-            }
+            return getUserCommandDelete(userInput);
         case "find":
-            try {
-                String findString = userInput.split(" ", 2)[1];
-                return new UserCommandFind(findString);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                throw new EmptyDescException(CommandFormats.FIND);
-            }
+            return getUserCommandFind(userInput);
         default:
             throw new UnrecognisedCmdException();
+        }
+    }
+
+    /**
+     * Returns a UserCommandList object, capturing the Command
+     *
+     * @return UserCommandList object encapsulating relevant information
+     */
+    private static UserCommandList getUserCommandList() {
+        return new UserCommandList();
+    }
+
+    /**
+     * Returns a UserCommandTodo object, capturing the Command and description of the task
+     *
+     * @param userInput The user's String input
+     * @return UserCommandTodo object encapsulating relevant information
+     * @throws EmptyDescException If the description for the task is not provided
+     */
+    private static UserCommandTodo getUserCommandTodo(String userInput) throws EmptyDescException {
+        try {
+            String todoTaskName = userInput.split(" ", 2)[1];
+            return new UserCommandTodo(todoTaskName);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new EmptyDescException(CommandFormats.TODO);
+        }
+    }
+
+    /**
+     * Returns a UserCommandDeadline object, capturing the Command, description of the task, and the deadline
+     *
+     * @param userInput The user's String input
+     * @return UserCommandDeadline object encapsulating relevant information
+     * @throws UnrecognisedKeywordException If the "/by" keyword was not typed correctly
+     * @throws EmptyDescException If the description for the task is not provided
+     * @throws DateTimeFormatException If the format for the deadline is not correct
+     */
+    private static UserCommandDeadline getUserCommandDeadline(String userInput)
+            throws UnrecognisedKeywordException, EmptyDescException, DateTimeFormatException {
+        if (!userInput.contains(" /by ")) {
+            throw new UnrecognisedKeywordException(CommandFormats.DEADLINE);
+        }
+
+        String[] splitSlashBy = userInput.split(" /by ");
+        String [] splitDeadline = splitSlashBy[0].split(" ", 2);
+        if (splitSlashBy.length != 2 || splitDeadline.length != 2) {
+            throw new EmptyDescException(CommandFormats.DEADLINE);
+        }
+
+        String deadlineTaskName = splitDeadline[1];
+        String deadlineString = splitSlashBy[1];
+
+        LocalDateTime deadlineDateTime;
+        try {
+            deadlineDateTime = LocalDateTime.parse(deadlineString, formatter);
+        } catch (DateTimeParseException e) {
+            throw new DateTimeFormatException();
+        }
+
+        return new UserCommandDeadline(deadlineTaskName, deadlineDateTime);
+    }
+
+    /**
+     * Returns a UserCommandEvent object, capturing the Command, description of the task, and the to and from times
+     * of the task
+     *
+     * @param userInput The user's String input
+     * @return UserCommandEvent object encapsulating relevant information
+     * @throws UnrecognisedKeywordException If the "/to" and/or "/from" keyword was not typed correctly
+     * @throws EmptyDescException If the description for the task is not provided
+     * @throws DateTimeFormatException If the format for the to or from date is not correct
+     */
+    private static UserCommandEvent getUserCommandEvent(String userInput)
+            throws UnrecognisedKeywordException, EmptyDescException, DateTimeFormatException {
+        if (!userInput.contains(" /from ") || !userInput.contains(" /to ")) {
+            throw new UnrecognisedKeywordException(CommandFormats.EVENT);
+        }
+
+        String[] splitSlashFrom = userInput.split(" /from ");
+        String[] splitSlashTo = splitSlashFrom[1].split(" /to ");
+        if (splitSlashFrom.length != 2 || splitSlashTo.length != 2) {
+            throw new EmptyDescException(CommandFormats.EVENT);
+        }
+
+        String eventTaskName = splitSlashFrom[0].split(" ", 2)[1];
+        String eventFrom = splitSlashTo[0];
+        String eventTo = splitSlashTo[1];
+
+        LocalDateTime fromDateTime;
+        LocalDateTime toDateTime;
+        try {
+            fromDateTime = LocalDateTime.parse(eventFrom, formatter);
+            toDateTime = LocalDateTime.parse(eventTo, formatter);
+        } catch (DateTimeParseException e) {
+            throw new DateTimeFormatException();
+        }
+
+        return new UserCommandEvent(eventTaskName, fromDateTime, toDateTime);
+    }
+
+    /**
+     * Returns a UserCommandMarkUnmark object, capturing the Command of Mark, and the number of the task to mark
+     *
+     * @param userInput The user's String input
+     * @return UserCommandMarkUnmark object encapsulating relevant information
+     * @throws EmptyDescException If no number was provided with the command
+     */
+    private static UserCommandMarkUnmark getUserCommandMarkUnmark(String userInput) throws EmptyDescException {
+        try {
+            int markNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
+            return new UserCommandMarkUnmark(Command.MARK, markNumber);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new EmptyDescException(CommandFormats.MARK);
+        }
+    }
+
+    /**
+     * Returns a UserCommandMarkUnmark object, capturing the Command of Unmark, and the number of the task to unmark
+     *
+     * @param userInput The user's String input
+     * @return UserCommandMarkUnmark object encapsulating relevant information
+     * @throws EmptyDescException If no number was provided with the command
+     */
+    private static UserCommandMarkUnmark getCommandMarkUnmark(String userInput) throws EmptyDescException {
+        try {
+            int unmarkNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
+            return new UserCommandMarkUnmark(Command.UNMARK, unmarkNumber);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new EmptyDescException(CommandFormats.UNMARK);
+        }
+    }
+
+    /**
+     * Returns a UserCommandDelete object, capturing the Command, and the number of the task to delete
+     *
+     * @param userInput The user's String input
+     * @return UserCommandDelete object encapsulating relevant information
+     * @throws EmptyDescException If no number was provided with the command
+     */
+    private static UserCommandDelete getUserCommandDelete(String userInput) throws EmptyDescException {
+        try {
+            int deleteNumber = Integer.parseInt(userInput.split(" ", 2)[1]);
+            return new UserCommandDelete(deleteNumber);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new EmptyDescException(CommandFormats.DELETE);
+        }
+    }
+
+    /**
+     * Returns a UserCommandFind object, capturing the Command, and the string of what the user is finding
+     *
+     * @param userInput The user's String input
+     * @return UserCommandFind object encapsulating relevant information
+     * @throws EmptyDescException If no string was provided for matching
+     */
+    private static UserCommandFind getUserCommandFind(String userInput) throws EmptyDescException {
+        try {
+            String findString = userInput.split(" ", 2)[1];
+            return new UserCommandFind(findString);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new EmptyDescException(CommandFormats.FIND);
         }
     }
 }
