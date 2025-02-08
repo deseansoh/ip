@@ -16,6 +16,7 @@ import usercommands.UserCommandEvent;
 import usercommands.UserCommandFind;
 import usercommands.UserCommandList;
 import usercommands.UserCommandMarkUnmark;
+import usercommands.UserCommandRemind;
 import usercommands.UserCommandTodo;
 import utilities.Command;
 import utilities.CommandFormats;
@@ -60,6 +61,8 @@ public class Parser {
             return getUserCommandDelete(userInput);
         case "find":
             return getUserCommandFind(userInput);
+        case "remind":
+            return getUserCommandRemind();
         default:
             throw new UnrecognisedCmdException();
         }
@@ -224,5 +227,14 @@ public class Parser {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new EmptyDescException(CommandFormats.FIND);
         }
+    }
+
+    /**
+     * Returns a UserCommandRemind object, capturing the Command
+     *
+     * @return UserCommandRemind object encapsulating relevant information
+     */
+    private static UserCommandRemind getUserCommandRemind() {
+        return new UserCommandRemind();
     }
 }
