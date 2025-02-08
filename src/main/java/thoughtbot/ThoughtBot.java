@@ -7,6 +7,7 @@ import usercommands.UserCommandDelete;
 import usercommands.UserCommandEvent;
 import usercommands.UserCommandFind;
 import usercommands.UserCommandMarkUnmark;
+import usercommands.UserCommandRemind;
 import usercommands.UserCommandTodo;
 
 /**
@@ -58,6 +59,8 @@ public class ThoughtBot {
                     UserCommandMarkUnmark unmark = (UserCommandMarkUnmark) uc;
                     responseString = myList.unmarkEntry(unmark.getMarkUnmarkNumber());
                     break;
+                case REMIND:
+                    responseString = myList.remindTasks();
                 default:
                     break;
                 }
