@@ -36,4 +36,8 @@ public class TaskDeadline extends Task {
         String minute = String.format("%02d", deadline.getMinute());
         return year + "-" + month + "-" + day + " " + hour + ":" + minute;
     }
+
+    public LocalDateTime getDeadlineLdt() {
+        return deadline;
+    }
 }

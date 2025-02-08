@@ -35,6 +35,10 @@ public class TaskEvent extends Task {
         return getFormattedTime(toTime);
     }
 
+    public LocalDateTime getFromTimeLdt() {
+        return fromTime;
+    }
+
     /**
      * Formats datetime in the correct string format and returns it
      * @return Formatted deadline
