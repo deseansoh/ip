@@ -13,6 +13,7 @@ public final class CommandFormats {
     public static final String UNMARK = "unmark <task index number>";
     public static final String DELETE = "delete <task index number>";
     public static final String FIND = "find <search string>";
+    public static final String REMIND = "remind";
     public static final String BYE = "bye";
 
     private CommandFormats() {

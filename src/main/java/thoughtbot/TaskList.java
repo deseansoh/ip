@@ -1,6 +1,7 @@
 package thoughtbot;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import exceptions.OutOfBoundsTaskException;
@@ -141,6 +142,7 @@ public class TaskList {
 
     /**
      * Finds the tasks that contain the substring of findString
+     *
      * @param findString Substring to search for in the tasks
      * @return String containing the tasks that have matched
      * @throws TaskNotFoundException If there are no tasks with a matching substring
@@ -160,6 +162,51 @@ public class TaskList {
         } else {
             throw new TaskNotFoundException();
         }
+    }
+
+    /**
+     * Identifies tasks that are due within one week and returns it as a String
+     *
+     * @return String containing tasks due within a week
+     */
+    public String remindTasks() {
+        String introString = "Here are the tasks that are due/happening within the week:\n";
+        printString = "";
+        long weekInMinutes = 10080;
+
+        LocalDateTime currentTime = LocalDateTime.now();
+
+        for (Task t: tasks) {
+            if (t.getClass() == TaskToDo.class) { // ToDo tasks have no deadline
+                continue;
+            }
+
+            long minutesDifference = 0;
+
+            if (t.getClass() == TaskDeadline.class) {
+                TaskDeadline deadlineTask = (TaskDeadline) t;
+                LocalDateTime deadlineTime = deadlineTask.getDeadlineLdt();
+                minutesDifference = ChronoUnit.MINUTES.between(currentTime, deadlineTime);
+            } else if (t.getClass() == TaskEvent.class) {
+                TaskEvent eventTask = (TaskEvent) t;
+                LocalDateTime eventFromTime = eventTask.getFromTimeLdt();
+                minutesDifference = ChronoUnit.MINUTES.between(currentTime, eventFromTime);
+            }
+
+            assert minutesDifference != 0 : "Unhandled task type in TaskList remindTasks";
+
+            boolean isWithinWeek = minutesDifference > 0 && minutesDifference < weekInMinutes;
+
+            if (isWithinWeek) {
+                printString += t.getFullName() + "\n";
+            }
+        }
+
+        if (printString.isEmpty()) {
+            return "There are no current tasks due/happening within the week.";
+        }
+
+        return introString + printString;
     }
 
     /**

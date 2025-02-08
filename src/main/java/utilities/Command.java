@@ -12,5 +12,5 @@ public enum Command {
     EVENT,
     DELETE,
     FIND,
-    ERROR,
+    REMIND,
 }
