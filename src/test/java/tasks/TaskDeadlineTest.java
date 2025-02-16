@@ -54,12 +54,12 @@ public class TaskDeadlineTest {
 
     @Test
     public void getDone_functionCall_success() {
-        boolean expectedDone = true;
+        boolean isDone = true;
         task.markDone();
-        assertEquals(expectedDone, task.getDone());
+        assertEquals(isDone, task.getDone());
 
-        expectedDone = false;
+        isDone = false;
         task.unmarkDone();
-        assertEquals(expectedDone, task.getDone());
+        assertEquals(isDone, task.getDone());
     }
 }

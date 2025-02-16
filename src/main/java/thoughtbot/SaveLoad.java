@@ -170,7 +170,7 @@ public class SaveLoad {
     }
 
     /**
-     * Simple function to mark a task as done if the done String is "1"
+     * Marks a task as done if the done String is "1"
      * @param t Task to be marked or not
      * @param done String containing either "0" or "1"
      */
