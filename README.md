@@ -1,5 +1,5 @@
 # ThoughtBot
-
+![Screenshot of an example use of ThoughtBot.](docs/Ui.png)
 > Thought about it? ThoughtBot it.
 
 :rocket: **ThoughtBot** is the all-new CLI-based task management chatbot for all your tracking needs. It currently has the following features:
